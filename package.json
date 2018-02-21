@@ -18,9 +18,11 @@
   "homepage": "https://github.com/MichaelDurfey/FoodiGo#readme",
   "dependencies": {
     "express": "^4.16.2",
-    "faker": "^4.1.0",
-    "nodemon": "^1.15.1",
     "save": "^2.3.2",
     "webpack": "^3.11.0"
+  },
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "nodemon": "^1.15.1"
   }
 }
