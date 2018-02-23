@@ -1,16 +1,15 @@
 import $ from 'jquery';
 
-const Promise = require('bluebird');
-
 const getDummyTitle = (callback) => {
-  $.get('/title', (err, data) => {
-    return new Promise( (resolve, reject) => {
-      if (err) reject(err);
-      resolve(data);
-    }).then((result) => {
-      callback(null, result);
-    }).catch(error => callback(error));
-  });
+  $.get('/title')
+    .done((data) => { callback(null, data); })
+    .fail((error) => { callback(error, null); });
 }; // END GET DUMMYDATA
 
-export default getDummyTitle;
+const getDummyMaps = (callback) => {
+  $.get('/map')
+    .done((data) => { callback(null, data); })
+    .fail((error) => { callback(error, null); });
+}; // END GET MAP DUMMYDATA
+
+export { getDummyTitle, getDummyMaps };

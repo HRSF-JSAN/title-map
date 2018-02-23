@@ -43,7 +43,7 @@ CREATE TABLE `Address` (
 
 DROP TABLE IF EXISTS `Restaurant_Types`;
 		
-CREATE TABLE `Association Table` (
+CREATE TABLE `Restaurant_Types` (
   `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
   `id_Types` INTEGER NULL DEFAULT NULL,
   `id_Restaurant` INTEGER NULL DEFAULT NULL,

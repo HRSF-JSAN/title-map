@@ -1,43 +1,46 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import getDummyTitle from './http-helpers';
+import { getDummyTitle, getDummyMaps } from './http-helpers';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-
+      titles: [],
+      maps: [],
+      errorMessage: '',
     };
   }
 
+  componentDidMount() {
+    this.getDummyData();
+  }
+
   getDummyData() {
-    getDummyTitle( (err, data) => {
-      if (err) console.log(err);
-      console.log(data)
+    getDummyTitle((err, data) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      this.setState({ titles: data });
+    });
+    getDummyMaps((error, result) => {
+      if (error) {
+        console.error(error);
+        return;
+      }
+      this.setState({ maps: result });
     });
   }
+
 
   render() {
     return (
       <div>
-        <button onClick={this.getDummyData()}/>
+        Hello React
       </div>
     );
   };
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
-
-const titleShape = {
-  title: '', // Tacos El Paisa
-  type: '', //Mexican
-  price: '', //$$
-  numStars: 0,
-}
-
-const mapShape = {
-  address: '',
-  image: 'file/at/this/path.png',
-  phoneNumber: '',
-}
-
