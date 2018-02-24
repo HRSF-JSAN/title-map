@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { getDummyTitle, getDummyMaps } from './http-helpers';
 
 class App extends React.Component {
@@ -8,7 +7,6 @@ class App extends React.Component {
     this.state = {
       titles: [],
       maps: [],
-      errorMessage: '',
     };
   }
 
@@ -18,17 +16,9 @@ class App extends React.Component {
 
   getDummyData() {
     getDummyTitle((err, data) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
       this.setState({ titles: data });
     });
     getDummyMaps((error, result) => {
-      if (error) {
-        console.error(error);
-        return;
-      }
       this.setState({ maps: result });
     });
   }
@@ -40,7 +30,7 @@ class App extends React.Component {
         Hello React
       </div>
     );
-  };
+  }
 }
 
-// ReactDOM.render(<App />, document.getElementById('app'));
+export default { App };
