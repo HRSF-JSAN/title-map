@@ -1,8 +1,8 @@
 import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+// import Adapter from 'enzyme-adapter-react-16';
 import { App } from '../client/src/index';
 
-configure({ adapter: new Adapter() });
+// configure({ adapter: new Adapter() });
 
 describe('data tests', () => {
   const app = new App();
