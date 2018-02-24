@@ -9,7 +9,7 @@ describe('/map route tests', () => {
   });
   test('should receive 200 status for a get request to /map', () => {
     getDummyMaps((err, result) => {
-      expect(result.getResponseHeader()).toBe(true);
+      expect(result.statusCode()).toBe(200);
     });
   });
 
@@ -28,7 +28,7 @@ describe('/title map routes', () => {
   });
   test('should receive 200 status for a get request to /title', () => {
     getDummyTitle((err, result) => {
-      expect(result).type().toBe('object');
+      expect(result.statusCode()).toBe(200);
     });
   });
 
