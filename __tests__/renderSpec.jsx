@@ -1,9 +1,9 @@
 import React from 'react';
-// import Adapter from 'enzyme-adapter-react-16';
+import Adapter from 'enzyme-adapter-react-16';
 import { shallow, configure } from 'enzyme';
 import { App } from '../client/src/index';
 
-// configure({ adapter: new Adapter() });
+configure({ adapter: new Adapter() });
 
 describe('render tests', () => {
   test('App component should correctly render elements to the DOM', () => {
