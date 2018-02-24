@@ -9,13 +9,15 @@
 -- Table 'Restaurant'
 -- 
 -- ---
-		
-CREATE TABLE `Restaurant` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `title` VARCHAR(100) NULL DEFAULT NULL,
-  `price` ENUM NULL DEFAULT NULL,
-  `numStars` INTEGER NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+create database restaurantYelp;
+
+create type dollarSigns as ENUM ('$', '$$', '$$$', '$$$$');
+
+CREATE TABLE Restaurant (
+  id INTEGER PRIMARY KEY DEFAULT 101,
+  title VARCHAR(100),
+  price dollarSigns,
+  numStars INTEGER
 );
 
 -- ---
@@ -23,45 +25,45 @@ CREATE TABLE `Restaurant` (
 -- 
 -- ---
 		
-CREATE TABLE `Address` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `address` VARCHAR(250) NULL DEFAULT NULL,
-  `image` VARCHAR(100) NULL DEFAULT NULL,
-  `phoneNumber` VARCHAR(120) NULL DEFAULT NULL,
-  `id_Restaurant` INTEGER NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE Address (
+  id INTEGER PRIMARY KEY,
+  address VARCHAR(250),
+  image VARCHAR(100),
+  phoneNumber VARCHAR(120),
+  id_Restaurant INTEGER,
+  FOREIGN KEY (id_Restaurant) REFERENCES Restaurant (id)
 );
 
 -- ---
 -- Table 'Association Table'
 -- 
 -- ---
+
+CREATE TABLE Types (
+  id INTEGER PRIMARY KEY,
+  type VARCHAR(100)
+);
 		
-CREATE TABLE `Restaurant_Types` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `id_Types` INTEGER NULL DEFAULT NULL,
-  `id_Restaurant` INTEGER NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE Restaurant_Types (
+  id INTEGER NULL PRIMARY KEY,
+  id_Types INTEGER,
+  id_Restaurant INTEGER,
+  FOREIGN KEY (id_Types) REFERENCES Types (id),
+  FOREIGN KEY (id_Restaurant) REFERENCES Restaurant (id)
 );
 
 -- ---
 -- Table 'Types'
 -- 
 -- ---
-		
-CREATE TABLE `Types` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `type` VARCHAR(100) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
 
 -- ---
 -- Foreign Keys 
 -- ---
 
-ALTER TABLE `Address` ADD FOREIGN KEY (id_Restaurant) REFERENCES `Restaurant` (`id`);
-ALTER TABLE `Restaurant_Types` ADD FOREIGN KEY (id_Types) REFERENCES `Types` (`id`);
-ALTER TABLE `Restaurant_Types` ADD FOREIGN KEY (id_Restaurant) REFERENCES `Restaurant` (`id`);
+-- ALTER TABLE Address ADD FOREIGN KEY (id_Restaurant) REFERENCES Restaurant (id);
+-- ALTER TABLE Restaurant_Types ADD FOREIGN KEY (id_Types) REFERENCES Types (id);
+-- ALTER TABLE Restaurant_Types ADD FOREIGN KEY (id_Restaurant) REFERENCES Restaurant (id);
 
 -- ---
 -- Test Data
