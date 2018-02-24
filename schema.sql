@@ -9,8 +9,6 @@
 -- Table 'Restaurant'
 -- 
 -- ---
-
-DROP TABLE IF EXISTS `Restaurant`;
 		
 CREATE TABLE `Restaurant` (
   `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
@@ -24,8 +22,6 @@ CREATE TABLE `Restaurant` (
 -- Table 'Address'
 -- 
 -- ---
-
-DROP TABLE IF EXISTS `Address`;
 		
 CREATE TABLE `Address` (
   `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
@@ -40,8 +36,6 @@ CREATE TABLE `Address` (
 -- Table 'Association Table'
 -- 
 -- ---
-
-DROP TABLE IF EXISTS `Restaurant_Types`;
 		
 CREATE TABLE `Restaurant_Types` (
   `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
@@ -54,8 +48,6 @@ CREATE TABLE `Restaurant_Types` (
 -- Table 'Types'
 -- 
 -- ---
-
-DROP TABLE IF EXISTS `Types`;
 		
 CREATE TABLE `Types` (
   `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
@@ -68,17 +60,8 @@ CREATE TABLE `Types` (
 -- ---
 
 ALTER TABLE `Address` ADD FOREIGN KEY (id_Restaurant) REFERENCES `Restaurant` (`id`);
-ALTER TABLE `Association Table` ADD FOREIGN KEY (id_Types) REFERENCES `Types` (`id`);
-ALTER TABLE `Association Table` ADD FOREIGN KEY (id_Restaurant) REFERENCES `Restaurant` (`id`);
-
--- ---
--- Table Properties
--- ---
-
--- ALTER TABLE `Restaurant` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `Address` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `Association Table` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `Types` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+ALTER TABLE `Restaurant_Types` ADD FOREIGN KEY (id_Types) REFERENCES `Types` (`id`);
+ALTER TABLE `Restaurant_Types` ADD FOREIGN KEY (id_Restaurant) REFERENCES `Restaurant` (`id`);
 
 -- ---
 -- Test Data
