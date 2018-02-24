@@ -1,5 +1,7 @@
-
 import { getDummyTitle, getDummyMaps } from '../client/src/http-helpers';
+
+const supertest = require('supertest');
+const app = require('../server/app');
 
 describe('/map route tests', () => {
   test('should not have an error for a get request to /map', () => {
@@ -36,5 +38,17 @@ describe('/title map routes', () => {
     getDummyTitle((err, result) => {
       expect(result).toHaveLength(200);
     });
+  });
+});
+
+describe('server routes', () => {
+  test('responds to /title/:id with a status of 200', () => {
+    supertest(app)
+      .get('/title/101')
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end((err) => {
+        if (err) throw err;
+      });
   });
 });
