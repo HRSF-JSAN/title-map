@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest",
     "dev": "webpack -d --watch",
-    "start": "nodemon server/index.js"
+    "start": "nodemon server/index.js",
+    "createDB": "psql -f schema.sql postgres;",
+    "seedDB": "node db/seedData.js"
   },
   "repository": {
     "type": "git",

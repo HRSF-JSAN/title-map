@@ -31,8 +31,7 @@
     address VARCHAR(250),
     image VARCHAR(100),
     phoneNumber VARCHAR(120),
-    id_Restaurant INTEGER,
-    FOREIGN KEY (id_Restaurant) REFERENCES Restaurant (id)
+    id_Restaurant INTEGER REFERENCES Restaurant
   );
 
 -- ---
@@ -42,15 +41,13 @@
 
   CREATE TABLE Types (
     id INTEGER PRIMARY KEY,
-    type VARCHAR(100)
+    type text
   );
 		
   CREATE TABLE Restaurant_Types (
-    id INTEGER NULL PRIMARY KEY,
-    id_Types INTEGER,
-    id_Restaurant INTEGER,
-    FOREIGN KEY (id_Types) REFERENCES Types (id),
-    FOREIGN KEY (id_Restaurant) REFERENCES Restaurant (id)
+    id_Types INTEGER REFERENCES Types,
+    id_Restaurant INTEGER REFERENCES Restaurant ON DELETE CASCADE,
+    PRIMARY KEY(id_Types, id_Restaurant)
   );
 
 -- ---
