@@ -9,48 +9,49 @@
 -- Table 'Restaurant'
 -- 
 -- ---
-create database restaurantYelp;
 
-create type dollarSigns as ENUM ('$', '$$', '$$$', '$$$$');
+  create database restaurantyelp;
+  \connect restaurantyelp;
 
-CREATE TABLE Restaurant (
-  id INTEGER PRIMARY KEY DEFAULT 101,
-  title VARCHAR(100),
-  price dollarSigns,
-  numStars INTEGER
-);
+    CREATE TYPE dollarsigns AS ENUM ('$', '$$', '$$$', '$$$$', '$$$$$', '$$$$$$');
+  CREATE TABLE Restaurant (
+    id INTEGER PRIMARY KEY,
+    title VARCHAR(100),
+    numStars INTEGER,
+      price dollarsigns
+  );
 
 -- ---
 -- Table 'Address'
 -- 
 -- ---
 		
-CREATE TABLE Address (
-  id INTEGER PRIMARY KEY,
-  address VARCHAR(250),
-  image VARCHAR(100),
-  phoneNumber VARCHAR(120),
-  id_Restaurant INTEGER,
-  FOREIGN KEY (id_Restaurant) REFERENCES Restaurant (id)
-);
+  CREATE TABLE Address (
+    id INTEGER PRIMARY KEY,
+    address VARCHAR(250),
+    image VARCHAR(100),
+    phoneNumber VARCHAR(120),
+    id_Restaurant INTEGER,
+    FOREIGN KEY (id_Restaurant) REFERENCES Restaurant (id)
+  );
 
 -- ---
 -- Table 'Association Table'
 -- 
 -- ---
 
-CREATE TABLE Types (
-  id INTEGER PRIMARY KEY,
-  type VARCHAR(100)
-);
+  CREATE TABLE Types (
+    id INTEGER PRIMARY KEY,
+    type VARCHAR(100)
+  );
 		
-CREATE TABLE Restaurant_Types (
-  id INTEGER NULL PRIMARY KEY,
-  id_Types INTEGER,
-  id_Restaurant INTEGER,
-  FOREIGN KEY (id_Types) REFERENCES Types (id),
-  FOREIGN KEY (id_Restaurant) REFERENCES Restaurant (id)
-);
+  CREATE TABLE Restaurant_Types (
+    id INTEGER NULL PRIMARY KEY,
+    id_Types INTEGER,
+    id_Restaurant INTEGER,
+    FOREIGN KEY (id_Types) REFERENCES Types (id),
+    FOREIGN KEY (id_Restaurant) REFERENCES Restaurant (id)
+  );
 
 -- ---
 -- Table 'Types'

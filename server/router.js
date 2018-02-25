@@ -10,6 +10,9 @@ router
   })
   .get('/map/:id', (req, res) => {
     res.send();
+  })
+  .get('/', (req, res) => {
+    res.send(404);
   });
 
 module.exports = router;

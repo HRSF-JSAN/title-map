@@ -4,7 +4,7 @@ const generateTitles = (callback) => {
   const result = [];
   for (let i = 0; i < 200; i += 1) {
     const types = ['Pizza', 'Italian', 'American', 'Chinese', 'Italian', 'Mexican', 'Indian', 'French', 'Brunch'];
-    const dollarsigns = ['', '', '', '', '', '', ''].fill('$', 0, Math.floor(Math.random() * 6)).join('');
+    const dollarsigns = ['', '', '', '', '', '', ''].fill('$', 1, Math.floor(Math.random() * 6)).join('');
     const numStars = Math.floor((Math.random() * (5 - 1)) + 1);
     const titleShape = {
       title: faker.company.companyName(),
