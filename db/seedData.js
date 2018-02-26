@@ -1,7 +1,7 @@
 const titleData = require('./data/titleData');
 const mapData = require('./data/mapData');
 const motherData = require('./data/MomaDummyData');
-const convertedTypes = require('./addTypes');
+// const convertedTypes = require('./addTypes');
 // const seedData = require('./dataToSeed');
 const { Client } = require('pg');
 
@@ -55,3 +55,4 @@ const insertTypes = (data) => {
 
 exports.insert = insertTitles;
 exports.insertMaps = insertMaps;
+exports.client = client;

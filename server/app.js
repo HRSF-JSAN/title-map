@@ -1,10 +1,17 @@
 const express = require('express');
 const path = require('path');
 // const dbHelpers = require('./db/dbHelpers.js');
+const { Client } = require('pg');
 const routes = require('./router');
 const bodyParser = require('body-parser');
 
 const app = express();
+
+const client = new Client({
+  database: 'restaurantyelp',
+});
+
+client.connect();
 
 app.use(bodyParser.json());
 
@@ -12,24 +19,5 @@ app.use(express.static(path.join(__dirname, '/client/dist')));
 
 app.use('/', routes);
 
-// app.get('/title', (req, res) => {
-//   dbHelpers.generateTitles((err, result) => {
-//     if (err) {
-//       res.sendStatus(500);
-//     } else {
-//       res.send(result);
-//     }
-//   });
-// });
-
-// app.get('/map', (req, res) => {
-//   dbHelpers.generateMaps((err, result) => {
-//     if (err) {
-//       res.sendStatus(500);
-//     } else {
-//       res.send(result);
-//     }
-//   });
-// });
-
-module.exports = app;
+exports.app = app;
+exports.client = client;
