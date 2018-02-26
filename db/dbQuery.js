@@ -1,15 +1,38 @@
 const { client } = require('../server/app');
-
-const findAll = (callback) => {
-  const queryString = 'select * from restaurant inner join Restaurant_Types on restaurant.id = Restaurant_Types.id_Restaurant inner join Types on Restaurant_Types.id_Types = Types.id';
-  client.query(queryString, (err, res) => {
-    if (err) throw new Error(err.stack)
-    console.log(res);
-  });
+const findAll = () => {
+  return new Promise((resolve, reject) => {
+    const queryString = 'select * from allInfo';
+    client.query(queryString, (err, res) => {
+      if (err) reject(err);
+      resolve(res);
+    });
+  }).then(res => console.log(res))
+    .catch(e => e);
 };
+
+// const findOneById = (id, callback) => {
+
+// };
+
+// const findOneByTitle = (title, callback) => {
+
+// };
+
+// const findAllByType = (type, callback) => {
+
+// };
+
+// const findAllByRating = (rating, callback) => {
+
+// }
 // implement promises above --TODO
 
-findAll();
+async function findAllCall() {
+  const result = await findAll();
+  return result;
+}
+
+console.log(findAllCall());
 /* {
         id: 7,
        title: 'Stark Group',

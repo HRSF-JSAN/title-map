@@ -11,13 +11,11 @@ const client = new Client({
 
 client.connect();
 
-let id = 0;
 Object.keys(motherData.types).forEach((type) => {
-  const queryString = 'insert into Types (id, type) values ($1, $2)';
-  client.query(queryString, [id, type], (err) => {
+  const queryString = 'insert into Types (type) values ($1)';
+  client.query(queryString, [type], (err) => {
     if (err) throw new Error(err.stack);
   });
-  id += 1;
 });
 
 const insertTitles = (data) => {
@@ -26,7 +24,7 @@ const insertTitles = (data) => {
     client.query(queryString, [item.title, item.numStars, item.price, item.id], (err) => {
       if (err) throw new Error(err.stack);
     });
-    const associationTable = 'insert into Restaurant_Types (id_Restaurant, id_Types) VALUES($1, $2)';
+    const associationTable = 'INSERT INTO Restaurant_Types (id_Restaurant, id_Types) VALUES($1, $2)';
     item.type.forEach((type) => {
       client.query(associationTable, [item.id, type], (err) => {
         if (err) throw new Error(err.stack);
@@ -36,22 +34,21 @@ const insertTitles = (data) => {
 };
 insertTitles(titleData);
 
+// client.query('INSERT INTO address (id_restaurant) VALUES($1)', [item.id], (err) => {
+//   if (err) throw new Error(err.stack);
+// });
+
 const insertMaps = (data) => {
-  let id = 101;
   data.forEach((item) => {
-    const queryString = 'INSERT INTO Address (address, image, phoneNumber, id) VALUES($1, $2, $3, $4)';
-    const values = [item.address, item.image, item.phoneNumber, id];
+    const queryString = 'insert into address (address, image, phoneNumber, id_restaurant) VALUES($1, $2, $3, $4)';
+    const values = [item.address, item.image, item.phoneNumber, item.id];
     client.query(queryString, values, (err) => {
       if (err) throw new Error(err.stack);
     });
-    id += 1;
   });
 };
 insertMaps(mapData);
 
-const insertTypes = (data) => {
-  let id = 101
-}
 
 exports.insert = insertTitles;
 exports.insertMaps = insertMaps;

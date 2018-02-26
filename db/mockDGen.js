@@ -1,5 +1,6 @@
 const fs = require('fs');
-const titleData = require('./data/stringifiedData');
+const mapData2 = require('./data/mapData2');
+const mapData = require('./data/mapData');
 const motherData = require('./data/MomaDummyData');
 let id = 101;
 const modifiedData = titleData.map((item) => {
@@ -20,19 +21,16 @@ const modifiedData = titleData.map((item) => {
   return item;
 });
 
-const types = [];
-
-Object.keys(motherData.types).forEach(key => types.push(key));
-
-const newData = titleData.map((item) => {
-  const convertTypes = item.type.map(type => types.indexOf(type));
-  item.type = convertTypes;
+let id = 101
+const newData = mapData.map((item) => {
+  item.id = id;
+  id += 1;
   return item;
 });
 
-fs.writeFile('db/data/titleData.json', JSON.stringify(newData), (err) => {
+fs.writeFile('db/data/mapData2.js', newData, (err) => {
   if (err) throw err;
 });
 
-exports.newData = newData;
-exports.modifiedData = modifiedData;
+
+

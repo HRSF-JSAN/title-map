@@ -1,31 +1,45 @@
 
+  drop database if exists restaurantyelp;
   create database restaurantyelp;
   \connect restaurantyelp;
 
     CREATE TYPE dollarsigns AS ENUM ('$', '$$', '$$$', '$$$$', '$$$$$', '$$$$$$');
   CREATE TABLE Restaurant (
-    id INTEGER PRIMARY KEY,
+    id INTEGER,
     title VARCHAR(100),
     numStars INTEGER,
       price dollarsigns
   );
 		
   CREATE TABLE Address (
-    id INTEGER PRIMARY KEY,
+    id SERIAL,
     address VARCHAR(250),
     image VARCHAR(100),
     phoneNumber VARCHAR(120),
-    id_Restaurant INTEGER REFERENCES Restaurant
+    id_Restaurant INTEGER
   );
 
   CREATE TABLE Types (
-    id INTEGER PRIMARY KEY,
+    id SERIAL,
     type text
   );
 		
   CREATE TABLE Restaurant_Types (
-    id_Types INTEGER REFERENCES Types,
-    id_Restaurant INTEGER REFERENCES Restaurant ON DELETE CASCADE,
-    PRIMARY KEY(id_Types, id_Restaurant)
+    id_Types INTEGER,
+    id_Restaurant INTEGER
   );
 
+  CREATE VIEW restaurantTypeView AS 
+      select title, type from restaurant
+      inner join Restaurant_Types on restaurant.id = Restaurant_Types.id_Restaurant
+      inner join Types on Restaurant_Types.id_Types = Types.id;
+
+  CREATE VIEW restaurantAddressView AS
+      select title, address from restaurant
+      inner join address on restaurant.id = address.id_restaurant;
+
+  CREATE VIEW allInfo AS 
+      select restaurant.id, title, numstars, price, address, image, phonenumber, type from restaurant
+      inner join address on restaurant.id = address.id_restaurant
+      inner join Restaurant_Types on restaurant.id = Restaurant_Types.id_Restaurant
+      inner join Types on Restaurant_Types.id_Types = Types.id;
