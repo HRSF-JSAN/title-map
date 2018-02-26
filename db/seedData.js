@@ -1,6 +1,6 @@
-const titleData = require('./data');
-const mapData = require('./mapData');
-const motherData = require('./MomaDummyData');
+const titleData = require('./data/titleData');
+const mapData = require('./data/mapData');
+const motherData = require('./data/MomaDummyData');
 const convertedTypes = require('./addTypes');
 // const seedData = require('./dataToSeed');
 const { Client } = require('pg');
@@ -20,17 +20,18 @@ Object.keys(motherData.types).forEach((type) => {
   id += 1;
 });
 
-const queryString = 'INSERT INTO Restaurant (title, numStars, price, id) VALUES($1, $2, $3, $4)';
-
 const insertTitles = (data) => {
   data.forEach((item) => {
     const queryString = 'INSERT INTO Restaurant (title, numStars, price, id) VALUES($1, $2, $3, $4)';
-    const values = [item.title, item.numStars, item.price, item.id];
-    client.query(queryString, values, (err) => {
+    client.query(queryString, [item.title, item.numStars, item.price, item.id], (err) => {
       if (err) throw new Error(err.stack);
     });
-    const associationTable = 'insert into Restaurant_Types '
-    client.query()
+    const associationTable = 'insert into Restaurant_Types (id_Restaurant, id_Types) VALUES($1, $2)';
+    item.type.forEach((type) => {
+      client.query(associationTable, [item.id, type], (err) => {
+        if (err) throw new Error(err.stack);
+      });
+    });
   });
 };
 insertTitles(titleData);
