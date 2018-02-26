@@ -1,18 +1,25 @@
 const express = require('express');
+const db = require('../db/dbQuery');
 
 const router = express.Router();
-// const db = require('../db/dbQuery');
 
 router
   .get('/title/:id', (req, res) => {
-    console.log('title route!!', req);
-    res.send();
+    const queryString = 'select * from allInfo where id = $1';
+    db.queryDB(queryString, req.params.id, (err, result) => {
+      if (err) throw new Error(err);
+      res.json(result);
+    });
   })
   .get('/map/:id', (req, res) => {
-    res.send();
+    const queryString = 'select * from address where id = $1';
+    db.queryDB(queryString, req.params.id, (err, result) => {
+      if (err) throw new Error(err);
+      res.json(result);
+    });
   })
-  .get('/', (req, res) => {
-    res.send(404);
+  .all('/*', (req, res) => {
+    res.sendStatus(404);
   });
 
 module.exports = router;

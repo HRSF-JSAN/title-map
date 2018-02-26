@@ -1,8 +1,6 @@
 const titleData = require('./data/titleData');
 const mapData = require('./data/mapData');
 const motherData = require('./data/MomaDummyData');
-// const convertedTypes = require('./addTypes');
-// const seedData = require('./dataToSeed');
 const { Client } = require('pg');
 
 const client = new Client({
@@ -34,22 +32,13 @@ const insertTitles = (data) => {
 };
 insertTitles(titleData);
 
-// client.query('INSERT INTO address (id_restaurant) VALUES($1)', [item.id], (err) => {
-//   if (err) throw new Error(err.stack);
-// });
-
 const insertMaps = (data) => {
   data.forEach((item) => {
     const queryString = 'insert into address (address, image, phoneNumber, id_restaurant) VALUES($1, $2, $3, $4)';
     const values = [item.address, item.image, item.phoneNumber, item.id];
     client.query(queryString, values, (err) => {
       if (err) throw new Error(err.stack);
-    });
+    }).then(() => client.end());
   });
 };
 insertMaps(mapData);
-
-
-exports.insert = insertTitles;
-exports.insertMaps = insertMaps;
-exports.client = client;

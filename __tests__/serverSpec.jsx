@@ -1,7 +1,7 @@
 import { getDummyTitle, getDummyMaps } from '../client/src/http-helpers';
 
 const supertest = require('supertest');
-const app = require('../server/app');
+const { app } = require('../server/app');
 
 describe('/map route tests', () => {
   test('should not have an error for a get request to /map', () => {

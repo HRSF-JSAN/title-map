@@ -1,13 +1,13 @@
 import $ from 'jquery';
 
 const getDummyTitle = (callback) => {
-  $.get('/title')
+  $.getJSON('/title/:id')
     .done(data => callback(null, data))
     .fail(err => callback(err));
 }; // END GET DUMMYDATA
 
 const getDummyMaps = (callback) => {
-  $.get('/map')
+  $.get('/map/:id')
     .done(data => callback(null, data))
     .fail(err => callback(err));
 }; // END GET MAP DUMMYDATA
