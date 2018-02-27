@@ -3,3 +3,4 @@ package-lock.json
 /client/dist/bundle.js
 /coverage**
 .DS_STORE
+/db/mockDGen.js

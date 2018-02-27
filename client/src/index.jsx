@@ -11,10 +11,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getDummyData();
+    this.getRestaurant();
   }
 
-  getDummyData() {
+  getRestaurant() {
     getTitle(101, (err, data) => {
       this.setState({ titles: data });
     });

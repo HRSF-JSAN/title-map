@@ -1,10 +1,7 @@
 const express = require('express');
 const db = require('../db/dbQuery');
-const path = require('path');
 
 const router = express.Router();
-
-router.use(express.static(path.join(__dirname, '../client/dist')));
 
 router
   .get('/title/:id', (req, res) => {
