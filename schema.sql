@@ -1,77 +1,45 @@
--- ---
--- Globals
--- ---
 
--- SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
--- SET FOREIGN_KEY_CHECKS=0;
+  drop database if exists restaurantyelp;
+  create database restaurantyelp;
+  \connect restaurantyelp;
 
--- ---
--- Table 'Restaurant'
--- 
--- ---
+    CREATE TYPE dollarsigns AS ENUM ('$', '$$', '$$$', '$$$$', '$$$$$', '$$$$$$');
+  CREATE TABLE Restaurant (
+    id INTEGER,
+    title VARCHAR(100),
+    numStars INTEGER,
+      price dollarsigns
+  );
 		
-CREATE TABLE `Restaurant` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `title` VARCHAR(100) NULL DEFAULT NULL,
-  `price` ENUM NULL DEFAULT NULL,
-  `numStars` INTEGER NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
+  CREATE TABLE Address (
+    id SERIAL,
+    address VARCHAR(250),
+    image VARCHAR(100),
+    phoneNumber VARCHAR(120),
+    id_Restaurant INTEGER
+  );
 
--- ---
--- Table 'Address'
--- 
--- ---
+  CREATE TABLE Types (
+    id SERIAL,
+    type text
+  );
 		
-CREATE TABLE `Address` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `address` VARCHAR(250) NULL DEFAULT NULL,
-  `image` VARCHAR(100) NULL DEFAULT NULL,
-  `phoneNumber` VARCHAR(120) NULL DEFAULT NULL,
-  `id_Restaurant` INTEGER NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
+  CREATE TABLE Restaurant_Types (
+    id_Types INTEGER,
+    id_Restaurant INTEGER
+  );
 
--- ---
--- Table 'Association Table'
--- 
--- ---
-		
-CREATE TABLE `Restaurant_Types` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `id_Types` INTEGER NULL DEFAULT NULL,
-  `id_Restaurant` INTEGER NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
+  CREATE VIEW restaurantTypeView AS 
+      select title, type, id_restaurant from restaurant
+      inner join Restaurant_Types on restaurant.id = Restaurant_Types.id_Restaurant
+      inner join Types on Restaurant_Types.id_Types = Types.id;
 
--- ---
--- Table 'Types'
--- 
--- ---
-		
-CREATE TABLE `Types` (
-  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `type` VARCHAR(100) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
+  CREATE VIEW restaurantAddressView AS
+      select title, address, id_restaurant from restaurant
+      inner join address on restaurant.id = address.id_restaurant;
 
--- ---
--- Foreign Keys 
--- ---
-
-ALTER TABLE `Address` ADD FOREIGN KEY (id_Restaurant) REFERENCES `Restaurant` (`id`);
-ALTER TABLE `Restaurant_Types` ADD FOREIGN KEY (id_Types) REFERENCES `Types` (`id`);
-ALTER TABLE `Restaurant_Types` ADD FOREIGN KEY (id_Restaurant) REFERENCES `Restaurant` (`id`);
-
--- ---
--- Test Data
--- ---
-
--- INSERT INTO `Restaurant` (`id`,`title`,`price`,`numStars`) VALUES
--- ('','','','');
--- INSERT INTO `Address` (`id`,`address`,`image`,`phoneNumber`,`id_Restaurant`) VALUES
--- ('','','','','');
--- INSERT INTO `Association Table` (`id`,`id_Types`,`id_Restaurant`) VALUES
--- ('','','');
--- INSERT INTO `Types` (`id`,`Pizza`,`American`,`Chinese`,`Italian`,`Mexican`,`Indian`,`French`,`Brunch`) VALUES
--- ('','','','','','','','','');
+  CREATE VIEW allInfo AS 
+      select restaurant.id, title, numstars, price, address, image, phonenumber, type from restaurant
+      inner join address on restaurant.id = address.id_restaurant
+      inner join Restaurant_Types on restaurant.id = Restaurant_Types.id_Restaurant
+      inner join Types on Restaurant_Types.id_Types = Types.id;

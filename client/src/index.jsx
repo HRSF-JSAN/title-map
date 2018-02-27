@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDummyTitle, getDummyMaps } from './http-helpers';
+import { getTitle, getAddress } from './http-helpers';
 
 class App extends React.Component {
   constructor() {
@@ -11,14 +11,14 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getDummyData();
+    this.getRestaurant();
   }
 
-  getDummyData() {
-    getDummyTitle((err, data) => {
+  getRestaurant() {
+    getTitle(101, (err, data) => {
       this.setState({ titles: data });
     });
-    getDummyMaps((error, result) => {
+    getAddress(101, (error, result) => {
       this.setState({ maps: result });
     });
   }
@@ -33,4 +33,4 @@ class App extends React.Component {
   }
 }
 
-export { App };
+module.exports = App;

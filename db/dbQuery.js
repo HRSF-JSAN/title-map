@@ -1,18 +1,25 @@
 const { Client } = require('pg');
 
 const client = new Client({
-  user: 'michaeldurfey',
-  host: 'local socket',
-  database: 'michaeldurfey',
-  password: 'student',
-  port: 3000,
+  database: 'restaurantyelp',
 });
 
-client.connect();
+client.connect()
+  .catch((e) => { throw new Error(e.stack); });
 
+const queryDB = (queryString, value, callback) => {
+  client.query(queryString, [value])
+    .then((res) => {
+      client.query(
+        'select * from restaurantTypeView where id_restaurant = $1', [value],
+        (err, result) => {
+          if (err) throw new Error(err);
+          const types = result.rows.map(i => i.type);
+          callback(null, [res.rows[0], types]);
+        },
+      );
+    })
+    .catch(e => callback(e.stack, null));
+};
 
-client.query('SELECT $1::text as message', ['Hello world!'], (err, res) => {
-  console.log(err ? err.stack : res.rows[0].message); // Hello World!
-  client.end();
-});
-
+module.exports = queryDB;

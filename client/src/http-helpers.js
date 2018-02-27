@@ -1,13 +1,15 @@
 import $ from 'jquery';
 
-const getDummyTitle = (callback) => {
-  $.get('/title')
-    .done(data => callback(null, data));
-}; // END GET DUMMYDATA
+const getTitle = (id, callback) => {
+  $.getJSON(`/title/${id}`)
+    .done(data => callback(null, data))
+    .fail(err => callback(err));
+};
 
-const getDummyMaps = (callback) => {
-  $.get('/map')
-    .done(data => callback(null, data));
-}; // END GET MAP DUMMYDATA
+const getAddress = (id, callback) => {
+  $.getJSON(`/map/${id}`)
+    .done(data => callback(null, data))
+    .fail(err => callback(err));
+};
 
-export { getDummyTitle, getDummyMaps };
+export { getTitle, getAddress };
