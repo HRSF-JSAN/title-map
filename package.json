@@ -22,6 +22,7 @@
   "homepage": "https://github.com/MichaelDurfey/FoodiGo#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
     "express": "^4.16.2",
     "faker": "^4.1.0",
     "jquery": "^3.3.1",

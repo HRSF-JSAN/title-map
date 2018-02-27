@@ -15,12 +15,12 @@ class App extends React.Component {
   }
 
   getRestaurant() {
-    getTitle(101, (err, data) => {
-      this.setState({ titles: data });
-    });
-    getAddress(101, (error, result) => {
-      this.setState({ maps: result });
-    });
+    // getTitle(101, (err, data) => {
+    //   this.setState({ titles: data });
+    // });
+    // getAddress(101, (error, result) => {
+    //   this.setState({ maps: result });
+    // });
   }
 
 

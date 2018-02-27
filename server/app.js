@@ -9,6 +9,8 @@ app.set('port', (process.env.PORT || 3001));
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use('/title', express.static(path.resolve(__dirname, '../client/dist')));
+app.use('/map/:id', express.static(path.resolve(__dirname, '../client/dist')));
 
-app.use('/', routes);
+app.use('/title', routes);
 module.exports = app;
