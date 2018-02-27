@@ -16,8 +16,8 @@ Object.keys(motherData.types).forEach((type) => {
   });
 });
 
-const insertTitles = (data) => {
-  data.forEach((item) => {
+const insertData = (title, map) => {
+  title.forEach((item) => {
     const queryString = 'INSERT INTO Restaurant (title, numStars, price, id) VALUES($1, $2, $3, $4)';
     client.query(queryString, [item.title, item.numStars, item.price, item.id], (err) => {
       if (err) throw new Error(err.stack);
@@ -29,16 +29,11 @@ const insertTitles = (data) => {
       });
     });
   });
-};
-insertTitles(titleData);
-
-const insertMaps = (data) => {
-  data.forEach((item) => {
+  map.forEach((item) => {
     const queryString = 'insert into address (address, image, phoneNumber, id_restaurant) VALUES($1, $2, $3, $4)';
     const values = [item.address, item.image, item.phoneNumber, item.id];
-    client.query(queryString, values, (err) => {
-      if (err) throw new Error(err.stack);
-    }).then(() => client.end());
+    client.query(queryString, values)
+      .catch((error) => { throw new Error(error); });
   });
 };
-insertMaps(mapData);
+insertData(titleData, mapData);

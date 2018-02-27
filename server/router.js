@@ -1,21 +1,32 @@
 const express = require('express');
 const db = require('../db/dbQuery');
+const path = require('path');
 
 const router = express.Router();
 
+router.use(express.static(path.join(__dirname, '../client/dist')));
+
 router
   .get('/title/:id', (req, res) => {
-    const queryString = 'select * from allInfo where id = $1';
-    db.queryDB(queryString, req.params.id, (err, result) => {
-      if (err) throw new Error(err);
-      res.json(result);
+    const queryString = 'select * from restaurant where id = $1';
+    db(queryString, req.params.id, (err, result) => {
+      if (err) res.sendStatus(500);
+      else if (result[0]) {
+        res.json(result);
+      } else {
+        res.sendStatus(404);
+      }
     });
   })
   .get('/map/:id', (req, res) => {
-    const queryString = 'select * from address where id = $1';
-    db.queryDB(queryString, req.params.id, (err, result) => {
-      if (err) throw new Error(err);
-      res.json(result);
+    const queryString = 'select * from address where id_restaurant = $1';
+    db(queryString, req.params.id, (err, result) => {
+      if (err) res.sendStatus(500);
+      else if (result[0]) {
+        res.json(result);
+      } else {
+        res.sendStatus(404);
+      }
     });
   })
   .all('/*', (req, res) => {

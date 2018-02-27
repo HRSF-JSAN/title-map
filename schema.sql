@@ -30,12 +30,12 @@
   );
 
   CREATE VIEW restaurantTypeView AS 
-      select title, type from restaurant
+      select title, type, id_restaurant from restaurant
       inner join Restaurant_Types on restaurant.id = Restaurant_Types.id_Restaurant
       inner join Types on Restaurant_Types.id_Types = Types.id;
 
   CREATE VIEW restaurantAddressView AS
-      select title, address from restaurant
+      select title, address, id_restaurant from restaurant
       inner join address on restaurant.id = address.id_restaurant;
 
   CREATE VIEW allInfo AS 

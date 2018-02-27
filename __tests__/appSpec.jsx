@@ -1,6 +1,6 @@
 import Adapter from 'enzyme-adapter-react-16';
 import { configure } from 'enzyme';
-import { App } from '../client/src/index';
+import App from '../client/src/index';
 
 configure({ adapter: new Adapter() });
 
@@ -8,9 +8,8 @@ describe('data tests', () => {
   const app = new App();
 
   test('title and map data should exist', () => {
-    app.getDummyData((err, title, maps) => {
-      expect(title.exists).to.equal(true);
-      expect(maps.exists).to.equal(true);
+    app.getDummyData(() => {
+      expect(app.state.titles).toHaveLength(2);
     });
   });
 
