@@ -7,11 +7,11 @@ Title and Map components for FoodiGo
 ## INSTALLATION
 
 
-###Dependencies
+### Dependencies
 - postgres ('brew install postgres')
 - none + npm ('brew install node')('brew install npm')
 
-###Setup
+### Setup
 1. Create a postgres database by running `npm run createDB` 
 2. Ensure you have the correct user and password on your local machine
 3. Seed the database by running `npm run seedDB`
