@@ -12,4 +12,4 @@ Star.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-export default Star;
+module.exports = Star;

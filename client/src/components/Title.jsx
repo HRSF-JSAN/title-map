@@ -18,4 +18,4 @@ Title.propTypes = {
   }).isRequired,
 };
 
-export default Title;
+module.exports = Title;

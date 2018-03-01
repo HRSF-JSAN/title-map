@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types';
-import { Col } from 'reactstrap';
 import React from 'react';
 import Star from './Star';
 
 const Stars = ({ numStars }) => {
   const starNum = [];
   for (let i = 0; i < 5; i += 1) {
-    if (i <= numStars) {
+    if (i < numStars) {
       starNum.push(<Star className="redStar star" />);
     } else {
       starNum.push(<Star className="greyStar star" />);
@@ -26,4 +25,4 @@ Stars.propTypes = {
   numStars: PropTypes.number.isRequired,
 };
 
-export default Stars;
+module.exports = Stars;

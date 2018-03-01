@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const morgan = require('morgan');
+const morgan = require('morgan'); // eslint-disable-line
 const routes = require('./router');
 
 const app = express();

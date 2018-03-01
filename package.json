@@ -1,5 +1,14 @@
 {
   "name": "foodigo",
+  "jest": {
+    "verbose": true,
+    "transformIgnorePatterns": ["<rootDir>/node_modules/"],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
+  },
   "version": "1.0.0",
   "description": "ttle and map components for foodiGo",
   "main": "index.js",
@@ -21,19 +30,16 @@
   },
   "homepage": "https://github.com/MichaelDurfey/FoodiGo#readme",
   "dependencies": {
-    "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0",
     "express": "^4.16.2",
     "faker": "^4.1.0",
     "jquery": "^3.3.1",
     "pg": "^7.4.1",
     "prop-types": "^15.6.1",
-    "pug": "^2.0.0-rc.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-icons": "^2.2.7",
-    "reactstrap": "^5.0.0-beta.2",
-    "styled-components": "^3.1.6"
+    "reactstrap": "^5.0.0-beta.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
