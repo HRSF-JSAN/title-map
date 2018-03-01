@@ -12,7 +12,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)?$/,
         include: SRC_DIR,
         exclude: [
           path.resolve(__dirname, 'node_modules'),

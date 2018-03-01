@@ -1,11 +1,20 @@
 {
   "name": "foodigo",
   "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
     "verbose": true,
-    "transformIgnorePatterns": ["<rootDir>/node_modules/"],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest",
+      "^.+\\.js$": "babel-jest"
+    },
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|css)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
     }
   },
@@ -39,7 +48,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-icons": "^2.2.7",
-    "reactstrap": "^5.0.0-beta.2"
+    "reactstrap": "^5.0.0-beta"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
