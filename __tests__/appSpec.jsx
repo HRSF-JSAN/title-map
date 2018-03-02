@@ -1,30 +1,30 @@
 import Adapter from 'enzyme-adapter-react-16';
-import { configure } from 'enzyme';
+import React from 'react';
+import { configure, mount } from 'enzyme';
 import App from '../client/src/index';
 
 configure({ adapter: new Adapter() });
 
-describe('App Component tests', () => {
-  const app = new App();
-  test('title and map data should exis and have a length of 2', () => {
-    app.getState(202, (err, result) => {
-      if (err) {
-        throw new Error(err);
-      }
-      expect(result.exitst()).toBe('true');
-    });
+describe('<App /> Dom Rendering', () => {
+  const app = mount(<App />);
+  test('app should render correctly with state', () => {
+    const appState = app.state('title');
+    expect(appState).toHaveProperty('title');
   });
-  test('title data should have a title and type property', () => {
-    app.getState(202, (err, result) => {
-      if (err) {
-        throw new Error(err);
-      }
-      expect(result.exitst()).toBe('true');
-    });
+  test('title should render correctly with a length', () => {
+    const title = app.find('#title');
+    expect(title).toHaveLength(1);
+  });
+  test('map data should render correctly with a length', () => {
+    const maps = app.find('#map');
+    expect(maps).toHaveLength(1);
   });
   test('map data should have an address property', () => {
-    app.getState((err, title, maps) => {
-      expect(maps[0].address.exists()).toBe(true);
-    });
+    const maps = app.find('#map');
+    expect(maps).toHaveLength(1);
+  });
+  test('state should be mutable', () => {
+    app.setState({ title: 'bourgeois' });
+    expect(app.state('title')).toEqual('bourgeois');
   });
 });

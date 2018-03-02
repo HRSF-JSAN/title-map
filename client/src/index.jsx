@@ -27,21 +27,15 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-    this.getState();
+  componentWillMount() {
+    this.getState(Math.floor((Math.random() * (300 - 101)) + 101));
   }
 
-  getState(id, callback) {
+  getState(id) {
     getRestaurant(id, (err, result) => {
       if (err) {
-        if (callback) {
-          callback(err);
-        }
         throw new Error(err);
       } else {
-        if (callback) {
-          callback(null, result);
-        }
         this.setState({
           title: result[0],
           types: result[1],
@@ -56,12 +50,12 @@ class App extends Component {
       <Container>
         <Row>
           <Col lg="9" md="10" sm="12" xs="12">
-            <Title title={this.state.title} types={this.state.types} />
+            <Title id="title" title={this.state.title} types={this.state.types} />
           </Col>
         </Row>
         <Row>
           <Col lg="4" md="5" sm="8" xs="8">
-            <MapView map={this.state.map} />
+            <MapView id="map" map={this.state.map} />
           </Col>
         </Row>
       </Container>
