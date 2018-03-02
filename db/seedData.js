@@ -12,7 +12,9 @@ Object.keys(motherData.types).forEach((type) => {
 });
 
 const insertData = (title, map) => {
-  title.forEach((item) => {
+  let titleCounter = 0;
+  let mapCounter = 0;
+  title.forEach((item, index) => {
     const queryString = 'INSERT INTO Restaurant (title, numstars, price, id) VALUES($1, $2, $3, $4)';
     client.query(queryString, [item.title, item.numStars, item.price, item.id], (err) => {
       if (err) throw new Error(err.stack);
@@ -23,12 +25,18 @@ const insertData = (title, map) => {
         if (err) throw new Error(err.stack);
       });
     });
+    titleCounter += 1;
   });
-  map.forEach((item) => {
+  map.forEach((item, index) => {
     const queryString = 'insert into address (address, image, phoneNumber, id_restaurant) VALUES($1, $2, $3, $4)';
     const values = [item.address, item.image, item.phoneNumber, item.id];
     client.query(queryString, values)
-      .catch((error) => { throw new Error(error); });
+      .catch((error) => { throw new Error(error); })
+      .then(() => {
+        if (index === map.length - 1) {
+          client.end();
+        }
+      });
   });
 };
 insertData(titleData, mapData, (err) => {
