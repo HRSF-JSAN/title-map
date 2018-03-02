@@ -2,7 +2,7 @@ const { Client } = require('pg');
 
 const client = new Client({
   host: 'localhost',
-  user: process.env.POSTGRES_USER || '',
+  user: process.env.POSTGRES_USER || 'michaeldurfey',
   database: process.env.POSTGRES_DB || 'restaurantyelp',
 });
 

@@ -25,7 +25,7 @@
     "test": "jest",
     "dev": "webpack -d --watch",
     "start": "nodemon server/index.js",
-    "createDB": "psql -f schema.sql postgres;",
+    "createDB": "psql --host localhost -U root -f schema.sql postgres",
     "seedDB": "node db/seedData.js"
   },
   "repository": {
