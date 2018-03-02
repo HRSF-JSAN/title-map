@@ -43,7 +43,7 @@ jobs:
       - run: 
           name: create database
           command: |
-          psql -f schema.sql postgres
+            psql -f schema.sql postgres
 
       # - run: npm run createDB
 
