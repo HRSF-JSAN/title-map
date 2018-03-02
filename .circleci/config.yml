@@ -43,7 +43,7 @@ jobs:
 
       # - run: npm run createDB
       
-      - run: npm run seedDB
+      # - run: npm run seedDB
         
       # run tests!
       - run: npm test
