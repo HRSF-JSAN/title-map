@@ -8,7 +8,7 @@
     id INTEGER,
     title VARCHAR(100),
     numStars INTEGER,
-      price dollarsigns
+    price dollarsigns
   );
 		
   CREATE TABLE Address (

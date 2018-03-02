@@ -12,4 +12,20 @@ const getAddress = (id = 101, callback) => {
     .fail(err => callback(err));
 };
 
-export { getTitle, getAddress };
+const getRestaurant = (id, callback) => {
+  getTitle(id, (err, data) => {
+    if (err) {
+      callback(err, null);
+      return;
+    }
+    getAddress(id, (error, result) => {
+      if (error) {
+        callback(err, null)
+      } else {
+        callback(null, [data[0], data[1], result[0]]);
+      }
+    });
+  });
+};
+
+export { getTitle, getAddress, getRestaurant };

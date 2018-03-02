@@ -54,7 +54,7 @@ describe('Title Component render', () => {
 describe('Stars Component render', () => {
   test('it renders correctly', () => {
     const tree = renderer
-      .create(<Stars numStars={4} />).toJSON();
+      .create(<Stars numstars={4} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

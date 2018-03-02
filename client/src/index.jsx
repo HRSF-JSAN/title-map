@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './styles.css';
 import Title from './components/Title';
 import MapView from './components/MapView';
-import { getTitle, getAddress } from './http-helpers';
+import { getRestaurant } from './http-helpers';
 
 class App extends Component {
   constructor() {
@@ -13,7 +13,7 @@ class App extends Component {
       title: {
         id: 130,
         title: 'Nienow, Bradtke and Hills',
-        numStars: 4,
+        numstars: 4,
         price: '$$$$',
       },
       types: ['Indian'],
@@ -28,18 +28,28 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getRestaurant();
+    this.getState();
   }
 
-  getRestaurant(id) {
-    getTitle(id, (err, data) => {
-      // this.setState({ title: data });
-    });
-    getAddress(id, (error, result) => {
-      // this.setState({ map: result });
+  getState(id, callback) {
+    getRestaurant(id, (err, result) => {
+      if (err) {
+        if (callback) {
+          callback(err);
+        }
+        throw new Error(err);
+      } else {
+        if (callback) {
+          callback(null, result);
+        }
+        this.setState({
+          title: result[0],
+          types: result[1],
+          map: result[2],
+        });
+      }
     });
   }
-
 
   render() {
     return (

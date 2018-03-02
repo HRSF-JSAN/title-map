@@ -8,7 +8,7 @@ client.connect()
   .catch((e) => { throw new Error(e.stack); });
 
 const queryDB = (queryString, value, callback) => {
-  client.query(queryString, [value])
+  (value ? client.query(queryString, [value]) : client.query(queryString))
     .then((res) => {
       client.query(
         'select * from restaurantTypeView where id_restaurant = $1', [value],

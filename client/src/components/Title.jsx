@@ -5,13 +5,13 @@ import Stars from './Stars';
 const Title = ({ title }) => (
   <div>
     <div className="title">{title.title}</div>
-    <Stars numStars={title.numStars} />
+    <Stars numstars={title.numstars} />
   </div>
 );
 
 Title.propTypes = {
   title: PropTypes.shape({
-    numStars: PropTypes.number,
+    numstars: PropTypes.number,
     price: PropTypes.string,
     id: PropTypes.number,
     title: PropTypes.string,

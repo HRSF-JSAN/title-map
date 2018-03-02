@@ -4,31 +4,26 @@ import App from '../client/src/index';
 
 configure({ adapter: new Adapter() });
 
-describe('data tests', () => {
+describe('App Component tests', () => {
   const app = new App();
-
-  test('title and map data should exist', () => {
-    app.getRestaurant(() => {
-      expect(app.state.titles).toHaveLength(2);
+  test('title and map data should exis and have a length of 2', () => {
+    app.getState(202, (err, result) => {
+      if (err) {
+        throw new Error(err);
+      }
+      expect(result.exitst()).toBe('true');
     });
   });
-
-  test('map and title data should have a length of 200', () => {
-    app.getRestaurant((err, title, maps) => {
-      expect(maps).toHaveLength(200);
-      expect(title).toHaveLength(200);
-    });
-  });
-
   test('title data should have a title and type property', () => {
-    app.getRestaurant((err, title) => {
-      expect(title[0].title.exists()).toBe(true);
-      expect(title[0].type.exists()).toBe(true);
+    app.getState(202, (err, result) => {
+      if (err) {
+        throw new Error(err);
+      }
+      expect(result.exitst()).toBe('true');
     });
   });
-
   test('map data should have an address property', () => {
-    app.getRestaurant((err, title, maps) => {
+    app.getState((err, title, maps) => {
       expect(maps[0].address.exists()).toBe(true);
     });
   });

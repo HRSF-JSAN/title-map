@@ -1,5 +1,5 @@
-const titleData = require('./data/titleData');
-const mapData = require('./data/mapData');
+const titleData = require('./data/titleData.json');
+const mapData = require('./data/mapData.json');
 const motherData = require('./data/MomaDummyData');
 const { Client } = require('pg');
 
@@ -18,8 +18,8 @@ Object.keys(motherData.types).forEach((type) => {
 
 const insertData = (title, map) => {
   title.forEach((item) => {
-    const queryString = 'INSERT INTO Restaurant (title, numStars, price, id) VALUES($1, $2, $3, $4)';
-    client.query(queryString, [item.title, item.numStars, item.price, item.id], (err) => {
+    const queryString = 'INSERT INTO Restaurant (title, numstars, price, id) VALUES($1, $2, $3, $4)';
+    client.query(queryString, [item.title, item.numsStars, item.price, item.id], (err) => {
       if (err) throw new Error(err.stack);
     });
     const associationTable = 'INSERT INTO Restaurant_Types (id_Restaurant, id_Types) VALUES($1, $2)';
@@ -36,4 +36,10 @@ const insertData = (title, map) => {
       .catch((error) => { throw new Error(error); });
   });
 };
-insertData(titleData, mapData);
+insertData(titleData, mapData, (err) => {
+  if (err) {
+    throw new Error(err);
+  }
+});
+
+exports.insertData = insertData;
