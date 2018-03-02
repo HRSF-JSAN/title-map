@@ -1,11 +1,4 @@
-const { Client } = require('pg');
-
-const client = new Client({
-  database: 'restaurantyelp',
-});
-
-client.connect()
-  .catch((e) => { throw new Error(e.stack); });
+const client = require('./client');
 
 const queryDB = (queryString, value, callback) => {
   (value ? client.query(queryString, [value]) : client.query(queryString))

@@ -1,12 +1,12 @@
 import $ from 'jquery';
 
-const getTitle = (id = 101, callback) => {
+const getTitle = (id, callback) => {
   $.getJSON(`/title/${id}`)
     .done(data => callback(null, data))
     .fail(err => callback(err));
 };
 
-const getAddress = (id = 101, callback) => {
+const getAddress = (id, callback) => {
   $.getJSON(`/map/${id}`)
     .done(data => callback(null, data))
     .fail(err => callback(err));
@@ -20,7 +20,7 @@ const getRestaurant = (id, callback) => {
     }
     getAddress(id, (error, result) => {
       if (error) {
-        callback(err, null)
+        callback(err, null);
       } else {
         callback(null, [data[0], data[1], result[0]]);
       }

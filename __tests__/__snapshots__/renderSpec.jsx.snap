@@ -202,7 +202,7 @@ exports[`Title Component render it renders correctly 1`] = `
       className="starContainer"
     >
       <div
-        className="redStar star"
+        className="greyStar star"
       >
         <img
           alt="star img"
@@ -211,7 +211,7 @@ exports[`Title Component render it renders correctly 1`] = `
         />
       </div>
       <div
-        className="redStar star"
+        className="greyStar star"
       >
         <img
           alt="star img"
@@ -220,7 +220,7 @@ exports[`Title Component render it renders correctly 1`] = `
         />
       </div>
       <div
-        className="redStar star"
+        className="greyStar star"
       >
         <img
           alt="star img"
@@ -229,7 +229,7 @@ exports[`Title Component render it renders correctly 1`] = `
         />
       </div>
       <div
-        className="redStar star"
+        className="greyStar star"
       >
         <img
           alt="star img"
