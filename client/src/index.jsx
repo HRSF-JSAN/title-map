@@ -11,18 +11,18 @@ class App extends Component {
     super();
     this.state = {
       title: {
-        id: 130,
-        title: 'Nienow, Bradtke and Hills',
-        numstars: 4,
-        price: '$$$$',
+        id: '',
+        title: '',
+        numstars: 0,
+        price: '',
       },
-      types: ['Indian'],
+      types: [],
       map: {
-        id: 30,
-        address: '51052 Roob Forge West Chesley Utah, 11729-3188',
-        image: 'http://lorempixel.com/640/480',
-        phonenumber: '942-284-4906',
-        id_restaurant: 130,
+        id: '',
+        address: '',
+        image: '',
+        phonenumber: '',
+        id_restaurant: 0,
       },
     };
   }
