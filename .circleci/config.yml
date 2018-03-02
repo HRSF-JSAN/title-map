@@ -38,16 +38,21 @@ jobs:
       - run: 
           name: install postgresql
           command: |
-            sudo apt install postgresql
+            sudo apt install postgresql-client
 
-      - run: npm run createDB
+      - run: 
+          name: create database
+          command: |
+          psql -f schema.sql postgres
+
+      # - run: npm run createDB
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       
-      - run: npm run seedDB
+      # - run: npm run seedDB
         
       # run tests!
       - run: npm test
