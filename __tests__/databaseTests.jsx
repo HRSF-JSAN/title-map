@@ -11,4 +11,7 @@ describe('seedsData', () => {
       expect(result.type()).toBe('object');
     });
   });
+  test('it should return an empty result for nonExistant data', () => {
+    dbQuery('select * from ')
+  })
 });

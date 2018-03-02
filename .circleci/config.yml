@@ -39,9 +39,7 @@ jobs:
           name: install postgresql
           command: sudo apt update && sudo apt install postgresql-client
 
-      - run: psql --host localhost -U root -f schema.sql postgres
-
-      # - run: npm run createDB
+      - run: npm run createDB
 
       - save_cache:
           paths:

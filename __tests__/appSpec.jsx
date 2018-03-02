@@ -7,6 +7,10 @@ configure({ adapter: new Adapter() });
 
 describe('<App /> Dom Rendering', () => {
   const app = mount(<App />);
+  test('app should render correctly with state', () => {
+    const appState = app.state('title');
+    expect(appState).toHaveProperty('title');
+  });
   test('title should render correctly with a length', () => {
     const title = app.find('#title');
     expect(title).toHaveLength(1);

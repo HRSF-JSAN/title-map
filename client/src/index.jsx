@@ -27,13 +27,17 @@ class App extends Component {
     };
   }
 
+  componentWillMount() {
+    this.getState(Math.floor((Math.random() * (300 - 101)) + 101));
+  }
+
   getState(id) {
     getRestaurant(id, (err, result) => {
       if (err) {
-        console.log(err)
+        console.log(err);
         throw new Error(err);
       } else {
-        console.log(result)
+        console.log(result);
         this.setState({
           title: result[0],
           types: result[1],
