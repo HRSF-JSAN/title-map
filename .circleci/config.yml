@@ -12,7 +12,7 @@ jobs:
           - POSTGRES_USER: root
           - POSTGRES_DB: postgres
 
-      - image: circleci/postgres:10.2-alpine-ram
+      - image: circleci/postgres:10.2-alpine
         environment:
           - POSTGRES_USER: root
           - POSTGRES_DB: postgres
@@ -35,15 +35,17 @@ jobs:
       #     - v1-dependencies-
 
       - run: npm install
+      - run: 
+          name: install postgresql-client
+          command: |
+            sudo apt install postgresql-client
 
-      - run: sudo apt install postgresql-client
+      - run: npm run createDB
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run: npm run createDB
       
       - run: npm run seedDB
         
