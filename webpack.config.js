@@ -12,7 +12,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)?$/,
         include: SRC_DIR,
         exclude: [
           path.resolve(__dirname, 'node_modules'),
@@ -21,6 +21,19 @@ module.exports = {
         query: {
           presets: ['env', 'react'],
         },
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+      {
+        test: /\.jpg$/,
+        use: [
+          'file-loader',
+        ],
       },
     ],
   },
