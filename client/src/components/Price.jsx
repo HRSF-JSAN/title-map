@@ -19,8 +19,13 @@ const Price = ({ types, price }) => {
 };
 
 Price.propTypes = {
-  types: PropTypes.arrayOf(PropTypes.string).isRequired,
-  price: PropTypes.string.isRequired,
+  types: PropTypes.arrayOf(PropTypes.string),
+  price: PropTypes.string,
+};
+
+Price.defaultProps = {
+  types: [],
+  price: '',
 };
 
 module.exports = Price;

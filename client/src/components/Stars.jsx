@@ -22,7 +22,11 @@ const Stars = ({ numstars }) => {
 };
 
 Stars.propTypes = {
-  numstars: PropTypes.number.isRequired,
+  numstars: PropTypes.number,
+};
+
+Stars.defaultProps = {
+  numstars: 1,
 };
 
 module.exports = Stars;

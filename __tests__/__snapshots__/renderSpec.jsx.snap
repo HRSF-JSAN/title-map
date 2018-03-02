@@ -202,7 +202,7 @@ exports[`Title Component render it renders correctly 1`] = `
       className="starContainer"
     >
       <div
-        className="greyStar star"
+        className="redStar star"
       >
         <img
           alt="star img"
