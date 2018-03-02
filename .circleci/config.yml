@@ -12,7 +12,7 @@ jobs:
           - POSTGRES_USER: root
           - POSTGRES_DB: postgres
 
-      - image: circleci/postgres:10.2-alpine
+      - image: circleci/postgres:10.2-alpine-ram
         environment:
           - POSTGRES_USER: root
           - POSTGRES_DB: postgres
@@ -38,7 +38,7 @@ jobs:
       - run: 
           name: install postgresql
           command: |
-            sudo apt install postgresql-client
+            sudo apt install postgresql-client --fix-missing
 
       - run: 
           name: create database

@@ -1,7 +1,7 @@
 const client = require('./client');
 
 const queryDB = (queryString, value, callback) => {
-  (value ? client.query(queryString, [value]) : client.query(queryString))
+  client.query(queryString, [value])
     .then((res) => {
       client.query(
         'select * from restaurantTypeView where id_restaurant = $1', [value],
