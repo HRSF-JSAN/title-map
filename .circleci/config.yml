@@ -36,10 +36,12 @@ jobs:
 
       - run: npm install
       - run: 
-          name: install postgresql-client
+          name: install postgresql-client      
+          command: |
+            sudo apt-get update
           command: |
             sudo apt install postgresql-client
-
+            
       - run: npm run createDB
 
       - save_cache:
