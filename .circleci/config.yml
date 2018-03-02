@@ -41,7 +41,7 @@ jobs:
 
       - run: 
           name: create database
-          command: dockerize -wait psql -f schema.sql postgres
+          command: psql -f schema.sql postgres
 
       # - run: npm run createDB
 
