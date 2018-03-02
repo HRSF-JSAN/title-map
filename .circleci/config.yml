@@ -7,15 +7,15 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:8.0.0
+      - image: circleci/node:8.9.4
         environment: 
-          - PGHOST: 127.0.0.1
-          - PGUSER: root
+          - POSTGRES_USER: michaeldurfey
+          - POSTGRES_DB: restaurantyelp
 
       - image: circleci/postgres:9.6-alpine-ram
         environment:
-          - POSTGRES_USER: root
-          - POSTGRES_DB: postgres
+          - POSTGRES_USER: michaeldurfey
+          - POSTGRES_DB: restaurantyelp
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -37,7 +37,7 @@ jobs:
       - run: npm install
       - run: 
           name: install postgresql
-          command: sudo apt install postgresql-client --fix-missing
+          command: sudo apt update && sudo apt install postgresql-client
 
       - run: 
           name: create database
