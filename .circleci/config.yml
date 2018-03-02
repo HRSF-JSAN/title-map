@@ -9,12 +9,12 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:8.9.4
         environment: 
-          - POSTGRES_USER: michaeldurfey
+          - POSTGRES_USER: root
           - POSTGRES_DB: restaurantyelp
 
       - image: circleci/postgres:10.2-alpine-ram
         environment:
-          - POSTGRES_USER: michaeldurfey
+          - POSTGRES_USER: root
           - POSTGRES_DB: restaurantyelp
       
       # Specify service dependencies here if necessary
@@ -39,7 +39,7 @@ jobs:
           name: install postgresql
           command: sudo apt update && sudo apt install postgresql-client
 
-      - run: npm run createDB
+      - run: psql --host localhost -U root -f schema.sql postgres
 
       # - run: npm run createDB
 
