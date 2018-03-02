@@ -34,10 +34,8 @@ class App extends Component {
   getState(id) {
     getRestaurant(id, (err, result) => {
       if (err) {
-        console.log(err);
         throw new Error(err);
       } else {
-        console.log(result);
         this.setState({
           title: result[0],
           types: result[1],

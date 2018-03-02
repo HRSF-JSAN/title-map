@@ -23,4 +23,8 @@ describe('<App /> Dom Rendering', () => {
     const maps = app.find('#map');
     expect(maps).toHaveLength(1);
   });
+  test('state should be mutable', () => {
+    app.setState({ title: 'bourgeois' });
+    expect(app.state('title')).toEqual('bourgeois');
+  });
 });

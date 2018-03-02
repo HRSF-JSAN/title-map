@@ -12,7 +12,7 @@ const queryDB = (queryString, value, callback) => {
           callback(e);
         });
     })
-    .catch(e => callback(e.stack, null));
+    .catch(e => e.stack);
 };
 
 module.exports = queryDB;
