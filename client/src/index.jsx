@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './styles.css';
 import Title from './components/Title';
 import MapView from './components/MapView';
+import Price from './components/Price';
 import { getRestaurant } from './http-helpers';
 
 class App extends Component {
@@ -11,14 +12,14 @@ class App extends Component {
     super();
     this.state = {
       title: {
-        id: '',
+        id: 0,
         title: '',
         numstars: 0,
         price: '',
       },
       types: [],
       map: {
-        id: '',
+        id: 0,
         address: '',
         image: '',
         phonenumber: '',
@@ -51,6 +52,11 @@ class App extends Component {
         <Row>
           <Col lg="9" md="10" sm="12" xs="12">
             <Title id="title" title={this.state.title} types={this.state.types} />
+          </Col>
+        </Row>
+        <Row>
+          <Col lg="9" md="10" sm="12" xs="12">
+            <Price id="price" types={this.state.types} price={this.state.title.price} />
           </Col>
         </Row>
         <Row>
