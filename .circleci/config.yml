@@ -12,7 +12,7 @@ jobs:
           - POSTGRES_USER: michaeldurfey
           - POSTGRES_DB: restaurantyelp
 
-      - image: circleci/postgres:9.6-alpine-ram
+      - image: circleci/postgres:10.2-alpine-ram
         environment:
           - POSTGRES_USER: michaeldurfey
           - POSTGRES_DB: restaurantyelp
@@ -39,9 +39,7 @@ jobs:
           name: install postgresql
           command: sudo apt update && sudo apt install postgresql-client
 
-      - run: 
-          name: create database
-          command: psql -f schema.sql postgres
+      - run: npm run createDB
 
       # - run: npm run createDB
 
