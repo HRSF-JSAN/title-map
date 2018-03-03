@@ -15,11 +15,9 @@ const queryDB = (queryString, value, callback) => {
     .catch(e => e.stack);
 };
 
-const postDB = (postString, value, callback) => {
-  client.query(postString, [value])
-    .then(() => {
-      callback(null);
-    })
+const postDB = (postString, value) => {
+  return client.query(postString, value)
+    .then(res => res)
     .catch(e => e.stack);
 };
 

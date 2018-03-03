@@ -33,10 +33,7 @@ class TypeModal extends Component {
   render() {
     return (
       <div>
-        <Button id="typeEditButton" onClick={this.toggle}><IosEdit />Edit</Button>
-        <UncontrolledTooltip placement="right" target="typeEditButton">
-          Edit category
-        </UncontrolledTooltip>
+        <Button onClick={this.toggle}><IosEdit />Edit</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
           <ModalBody>

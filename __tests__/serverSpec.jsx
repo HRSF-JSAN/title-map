@@ -77,3 +77,16 @@ describe('server routes', () => {
       });
   });
 });
+
+describe('post /', () => {
+  test('responds with a 201 to a post request', () => {
+    supertest(app)
+      .post('/')
+      .field(35, 'my awesome avatar')
+      .expect(201)
+      .end((err) => {
+        if (err) throw err;
+      });
+  });
+});
+

@@ -11,13 +11,8 @@ const getAddress = (id, callback) => {
 };
 
 const postType = (id, type, callback) => {
-  $.post('/', { type, id }, (err, res) => {
-    if (err) {
-      callback(err, null)
-    } else {
-      callback(null, res);
-    }
-  });
+  $.post('/', { type, id })
+    .done(data => callback(null, data));
 };
 
 const getRestaurant = (id, callback) => {

@@ -47,13 +47,14 @@ class App extends Component {
   }
 
   addNewType(type) {
-    postType(this.state.title.id, type, (err, result) => {
+    postType(this.state.title.id, type, (err, res) => {
       if (err) {
         throw new Error(err);
       } else {
-        this.getState(this.state.title.id)
+        console.log(res)
+        this.getState(this.state.title.id);
       }
-    })
+    });
   }
 
   render() {
