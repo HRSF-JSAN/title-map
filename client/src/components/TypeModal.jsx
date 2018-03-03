@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  UncontrolledTooltip, Button, Modal,
+  Button, Modal,
   ModalHeader, ModalBody, ModalFooter,
-  Input, InputGroup, InputGroupAddon,
+  Input,
 } from 'reactstrap';
 import IosEdit from 'react-icons/lib/io/edit';
-
-const http = require('../http-helpers');
 
 class TypeModal extends Component {
   constructor(props) {

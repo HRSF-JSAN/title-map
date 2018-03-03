@@ -47,11 +47,10 @@ class App extends Component {
   }
 
   addNewType(type) {
-    postType(this.state.title.id, type, (err, res) => {
+    postType(this.state.title.id, type, (err) => {
       if (err) {
         throw new Error(err);
       } else {
-        console.log(res)
         this.getState(this.state.title.id);
       }
     });
@@ -67,7 +66,12 @@ class App extends Component {
         </Row>
         <Row>
           <Col lg="9" md="10" sm="12" xs="12">
-            <Price id="price" types={this.state.types} price={this.state.title.price} addNewType={type => this.addNewType(type)} />
+            <Price
+              id="price"
+              types={this.state.types}
+              price={this.state.title.price}
+              addNewType={type => this.addNewType(type)}
+            />
           </Col>
         </Row>
         <Row>
