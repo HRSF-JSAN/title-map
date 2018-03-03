@@ -33,20 +33,20 @@ class TypeModal extends Component {
   render() {
     return (
       <div>
-        <Button onClick={this.toggle}><IosEdit />Edit</Button>
+        <Button id="typeEditButton" onClick={this.toggle}><IosEdit />Edit</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Add or Remove Categories</ModalHeader>
           <ModalBody>
             <Input
               value={this.state.type}
               onChange={e => this.setState({ type: e.target.value })}
             />
           </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={() => { this.toggle(); this.addType(); }}>
+          <ModalFooter className="modalFooter">
+            <Button color="danger" onClick={() => { this.toggle(); this.addType(); }}>
               Submit
             </Button>
-            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+            <Button color="clear" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
       </div>
