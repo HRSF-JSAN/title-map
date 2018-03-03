@@ -38,6 +38,7 @@
   display: flex;
   font-family: 'Helvetica Neue';
   font-size: 15px;
+  align-items: center;
 }
 
 .price > div {
@@ -48,12 +49,21 @@
   margin: 0px 3px 3px 3px;
 }
 
-#price {
-
+#typeEditButton {
+  font-size: 11px;
+  color: #999999;
+  height: 22px;
+  width: 51px;
+  padding: 0!important;
+  background-color: #F5F5F5;
+  border-color: rgba(0,0,0,0.1);
 }
 
-#types {
-
+#typeEditButton:hover {
+  font-size: 11px;
+  color: #333;
+  border-color: #cdcdcd;
+  border-color: rgba(0,0,0,0.2);
 }
 
 .reviewText {

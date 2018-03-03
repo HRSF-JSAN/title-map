@@ -23,4 +23,14 @@ describe('http-helper tests', () => {
       expect(result[0]).toHaveLength(1);
     });
   });
+  test('post Type should post a type', () => {
+    helper.postType(140, 'mexican', (err) => {
+      expect(err.stack).toBeUndefined();
+    });
+  });
+  test('post should return an error with an invalid id', () => {
+    helper.postType(7777, 'mexican', (err) => {
+      expect(err.stack).toBeTruthy();
+    });
+  });
 });

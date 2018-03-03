@@ -15,4 +15,13 @@ const queryDB = (queryString, value, callback) => {
     .catch(e => e.stack);
 };
 
-module.exports = queryDB;
+const postDB = (postString, value) => {
+  return client.query(postString, value)
+    .then(res => res)
+    .catch(e => e.stack);
+};
+
+module.exports = {
+  queryDB,
+  postDB,
+};
