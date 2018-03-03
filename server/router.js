@@ -26,6 +26,10 @@ router
       }
     });
   })
+  .post('/', (req, res) => {
+    console.log('post!', req);
+    response.end();
+  })
   .all('/*', (req, res) => {
     res.sendStatus(404);
   });

@@ -10,6 +10,16 @@ const getAddress = (id, callback) => {
     .done(data => callback(null, data));
 };
 
+const postType = (type, id, callback) => {
+  $.post('/', { type, id }, (err, res) => {
+    if (err) {
+      callback(err, null)
+    } else {
+      callback(null, res);
+    }
+  });
+};
+
 const getRestaurant = (id, callback) => {
   getTitle(id, (err, data) => {
     getAddress(id, (error, result) => (
@@ -18,4 +28,4 @@ const getRestaurant = (id, callback) => {
   });
 };
 
-export { getTitle, getAddress, getRestaurant };
+export { getTitle, getAddress, getRestaurant, postType };

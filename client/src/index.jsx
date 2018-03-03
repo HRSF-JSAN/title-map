@@ -56,7 +56,7 @@ class App extends Component {
         </Row>
         <Row>
           <Col lg="9" md="10" sm="12" xs="12">
-            <Price id="price" types={this.state.types} price={this.state.title.price} />
+            <Price id="price" types={this.state.types} price={this.state.title.price} addNewType={}/>
           </Col>
         </Row>
         <Row>
