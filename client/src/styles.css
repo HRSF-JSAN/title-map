@@ -34,6 +34,28 @@
   mix-blend-mode: color-dodge;
 }
 
+.price {
+  display: flex;
+  font-family: 'Helvetica Neue';
+  font-size: 15px;
+}
+
+.price > div {
+  margin: 0px 5px 3px 5px;
+}
+
+.price > div > a {
+  margin: 0px 3px 3px 3px;
+}
+
+#price {
+
+}
+
+#types {
+
+}
+
 .reviewText {
   margin-left: 15px;
   font-family: 'Helvetica Neue';

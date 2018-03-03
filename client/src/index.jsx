@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './styles.css';
 import Title from './components/Title';
 import MapView from './components/MapView';
+import Price from './components/Price';
 import { getRestaurant } from './http-helpers';
 
 class App extends Component {
@@ -11,18 +12,18 @@ class App extends Component {
     super();
     this.state = {
       title: {
-        id: 130,
-        title: 'Nienow, Bradtke and Hills',
-        numstars: 4,
-        price: '$$$$',
+        id: 0,
+        title: '',
+        numstars: 0,
+        price: '',
       },
-      types: ['Indian'],
+      types: [],
       map: {
-        id: 30,
-        address: '51052 Roob Forge West Chesley Utah, 11729-3188',
-        image: 'http://lorempixel.com/640/480',
-        phonenumber: '942-284-4906',
-        id_restaurant: 130,
+        id: 0,
+        address: '',
+        image: '',
+        phonenumber: '',
+        id_restaurant: 0,
       },
     };
   }
@@ -51,6 +52,11 @@ class App extends Component {
         <Row>
           <Col lg="9" md="10" sm="12" xs="12">
             <Title id="title" title={this.state.title} types={this.state.types} />
+          </Col>
+        </Row>
+        <Row>
+          <Col lg="9" md="10" sm="12" xs="12">
+            <Price id="price" types={this.state.types} price={this.state.title.price} />
           </Col>
         </Row>
         <Row>
