@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   UncontrolledTooltip, Button, Modal,
   ModalHeader, ModalBody, ModalFooter,
@@ -39,10 +40,15 @@ class TypeModal extends Component {
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
           <ModalBody>
-            <Input value={this.state.type} onChange={e => this.setState({ type: e.target.value })} />
+            <Input
+              value={this.state.type}
+              onChange={e => this.setState({ type: e.target.value })}
+            />
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={() => { this.toggle(); this.addType(); }}>Submit</Button>
+            <Button color="primary" onClick={() => { this.toggle(); this.addType(); }}>
+              Submit
+            </Button>
             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
@@ -50,5 +56,15 @@ class TypeModal extends Component {
     );
   }
 }
+
+TypeModal.propTypes = {
+  className: PropTypes.string,
+  addNewType: PropTypes.func,
+};
+
+TypeModal.defaultProps = {
+  className: 'typeModal',
+  addNewType: () => {},
+};
 
 export default TypeModal;

@@ -5,7 +5,7 @@ import './styles.css';
 import Title from './components/Title';
 import MapView from './components/MapView';
 import Price from './components/Price';
-import { getRestaurant } from './http-helpers';
+import { getRestaurant, postType } from './http-helpers';
 
 class App extends Component {
   constructor() {
@@ -46,6 +46,16 @@ class App extends Component {
     });
   }
 
+  addNewType(type) {
+    postType(this.state.title.id, type, (err, result) => {
+      if (err) {
+        throw new Error(err);
+      } else {
+        this.getState(this.state.title.id)
+      }
+    })
+  }
+
   render() {
     return (
       <Container>
@@ -56,7 +66,7 @@ class App extends Component {
         </Row>
         <Row>
           <Col lg="9" md="10" sm="12" xs="12">
-            <Price id="price" types={this.state.types} price={this.state.title.price} addNewType={}/>
+            <Price id="price" types={this.state.types} price={this.state.title.price} addNewType={type => this.addNewType(type)} />
           </Col>
         </Row>
         <Row>

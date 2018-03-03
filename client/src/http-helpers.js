@@ -10,7 +10,7 @@ const getAddress = (id, callback) => {
     .done(data => callback(null, data));
 };
 
-const postType = (type, id, callback) => {
+const postType = (id, type, callback) => {
   $.post('/', { type, id }, (err, res) => {
     if (err) {
       callback(err, null)

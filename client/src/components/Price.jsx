@@ -17,7 +17,7 @@ const Price = ({ types, price, addNewType }) => {
       { types ? types.map(i => <a href ="#">{i}</a>) : '' } {/* eslint-disable-line */}
       </div>
       <div>
-        <TypeModal addNewType={this.props.addNewType} className="typeModal"/>
+        <TypeModal addNewType={addNewType} className="typeModal"/>
       </div>
     </div>
   );
