@@ -2,14 +2,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Star from './Star';
 
+const uniqid = require('uniqid')
+
 const Stars = ({ numstars }) => {
   const starNum = [];
   for (let i = 0; i < 5; i += 1) {
-    if (i < numstars) {
-      starNum.push(<Star className="redStar star" key={i + 375} />);
-    } else {
-      starNum.push(<Star className="greyStar star" key={i + 375} />);
-    }
+    // es lint gave me an error here so I set no-unused-expressions to false in my eslintrc
+    // is there a more efficient or better way to add these star components?
+    i < numstars ? starNum.push(<Star className="redStar star" key={uniqid()} />) :
+      starNum.push(<Star className="greyStar star" key={uniqid()} />);
   }
   return (
     <div>

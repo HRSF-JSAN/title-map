@@ -49,7 +49,8 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-icons": "^2.2.7",
-    "reactstrap": "^5.0.0-beta"
+    "reactstrap": "^5.0.0-beta",
+    "uniqid": "^4.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
