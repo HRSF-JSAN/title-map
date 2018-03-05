@@ -7,25 +7,19 @@ const router = express.Router();
 router
   .get('/title/:id', (req, res) => {
     const queryString = 'select * from restaurant where id = $1';
-    db.queryDB(queryString, req.params.id, (err, result) => {
-      if (err) res.sendStatus(500);
-      else if (result[0]) {
-        res.json(result);
-      } else {
-        res.sendStatus(404);
-      }
-    });
+    db.queryDB(queryString, req.params.id)
+      .then((result) => {
+        result[0] ? res.json(result) : res.sendStatus(404);
+      })
+      .catch(() => res.sendStatus(500));
   })
   .get('/map/:id', (req, res) => {
     const queryString = 'select * from address where id_restaurant = $1';
-    db.queryDB(queryString, req.params.id, (err, result) => {
-      if (err) res.sendStatus(500);
-      else if (result[0]) {
-        res.json(result);
-      } else {
-        res.sendStatus(404);
-      }
-    });
+    db.queryDB(queryString, req.params.id)
+      .then((result) => {
+        result[0] ? res.json(result) : res.sendStatus(404);
+      })
+      .catch(() => res.sendStatus(500));
   })
   .post('/', (req, res) => {
     db.postDB('insert into Types (type) VALUES ($1)', [req.body.type])
@@ -45,7 +39,7 @@ router
       })
       .catch(() => res.sendStatus(500));
   })
-  .all('/*', (req, res) => {
+  .all('/+', (req, res) => {
     res.sendStatus(404);
   });
 

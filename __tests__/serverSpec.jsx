@@ -60,7 +60,7 @@ describe('server routes', () => {
         if (err) throw err;
       });
   });
-  test('should receive 404 status for a get request to /*', () => {
+  test('should receive 404 status for a get request to /cats', () => {
     supertest(app)
       .get('/cats')
       .expect(404)
@@ -82,7 +82,7 @@ describe('post /', () => {
   test('responds with a 201 to a post request', () => {
     supertest(app)
       .post('/')
-      .field(35, 'my awesome avatar')
+      .field('chinese', '205')
       .expect(201)
       .end((err) => {
         if (err) throw err;

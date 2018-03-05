@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button, Modal,
-  ModalHeader, ModalBody, ModalFooter,
-  Input,
+  Button, Modal, ModalHeader,
+  ModalBody, ModalFooter, Input,
 } from 'reactstrap';
 import IosEdit from 'react-icons/lib/io/edit';
 

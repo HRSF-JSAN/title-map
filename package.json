@@ -1,6 +1,9 @@
 {
   "name": "foodigo",
   "jest": {
+    "testPathIgnorePatterns": [
+      "<rootDir>/proxy/Components/"
+    ],
     "moduleFileExtensions": [
       "js",
       "jsx"
@@ -39,6 +42,7 @@
   },
   "homepage": "https://github.com/MichaelDurfey/FoodiGo#readme",
   "dependencies": {
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0",
     "express": "^4.16.2",
@@ -50,7 +54,8 @@
     "react-dom": "^16.2.0",
     "react-icons": "^2.2.7",
     "reactstrap": "^5.0.0-beta",
-    "uniqid": "^4.1.1"
+    "uniqid": "^4.1.1",
+    "webpack": "^3.11.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

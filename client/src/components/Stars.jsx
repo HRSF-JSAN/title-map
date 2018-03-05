@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Star from './Star';
 
-const uniqid = require('uniqid')
+const uniqid = require('uniqid');
 
 const Stars = ({ numstars }) => {
   const starNum = [];

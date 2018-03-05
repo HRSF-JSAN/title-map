@@ -1,5 +1,7 @@
 import $ from 'jquery';
 
+const Promise = require('bluebird');
+
 const getTitle = (id, callback) => {
   $.getJSON(`/title/${id}`)
     .done(data => callback(null, data));
@@ -12,15 +14,23 @@ const getAddress = (id, callback) => {
 
 const postType = (id, type, callback) => {
   $.post('/', { type, id })
-    .done(data => callback(null, data));
+    .done(() => callback())
+    .fail(err => err);
 };
 
-const getRestaurant = (id, callback) => {
-  getTitle(id, (err, data) => {
-    getAddress(id, (error, result) => (
-      error ? callback(error, null) : callback(null, [data[0], data[1], result[0]])
-    ));
-  });
-};
+// unexpected block statement surrounding arrow body
+const getRestaurant = (id, callback) => (
+  new Promise((resolve, reject) => {
+    getTitle(id, (err, data) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(data);
+    });
+  }).then((data) => {
+    getAddress(id, (error, res) => (
+      error ? callback(error, null) : callback(null, [data[0], data[1], res[0]])));
+  })
+);
 
 export { getTitle, getAddress, getRestaurant, postType };

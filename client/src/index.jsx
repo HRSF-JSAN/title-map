@@ -28,7 +28,7 @@ class App extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getState(Math.floor((Math.random() * (300 - 101)) + 101));
   }
 
@@ -47,12 +47,8 @@ class App extends Component {
   }
 
   addNewType(type) {
-    postType(this.state.title.id, type, (err) => {
-      if (err) {
-        throw new Error(err);
-      } else {
-        this.getState(this.state.title.id);
-      }
+    postType(this.state.title.id, type, () => {
+      this.getState(this.state.title.id);
     });
   }
 
