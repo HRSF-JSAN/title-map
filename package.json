@@ -2,7 +2,9 @@
   "name": "foodigo",
   "jest": {
     "testPathIgnorePatterns": [
-      "<rootDir>/proxy/Components/"
+      "<rootDir>/pictures",
+      "<rootDir>/reviews",
+      "<rootDir>/sidebar"
     ],
     "moduleFileExtensions": [
       "js",
