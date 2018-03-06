@@ -29,7 +29,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getState(Math.floor((Math.random() * (300 - 101)) + 101));
+    this.getState(this.props.id);
   }
 
   getState(id) {
@@ -82,5 +82,13 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  id: PropTypes.number,
+};
+
+App.defaultProps = {
+  id: 101,
+};
 
 module.exports = App;
