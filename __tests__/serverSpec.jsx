@@ -4,9 +4,9 @@ const app = require('../server/app');
 describe('/title map routes', () => {
   test('responds to /title/:id with an object with 5 properties', () => {
     supertest(app)
-      .get('/title/206')
+      .get('/title/106')
       .expect((res) => {
-        res.body[0].id_restaurant = 206;
+        res.body[0].id_restaurant = 106;
         res.body[0].numstars = 2;
         res.body[0].price = '$';
         res.body[1][1] = 'American';
@@ -19,9 +19,9 @@ describe('/title map routes', () => {
 
   test('responds to /map/:id with an object with 6 properties', () => {
     supertest(app)
-      .get('/title/206')
+      .get('/title/106')
       .expect((res) => {
-        res.body[0].id_restaurant = 206;
+        res.body[0].id_restaurant = 106;
         res.body[0].address = '7679 Goodwin Turnpike Hahnbury Idaho, 21902';
         res.body[0].phonenumber = '561-648-7203';
         res.body[0].image = 'http://lorempixel.com/640/480';
@@ -45,7 +45,7 @@ describe('server routes', () => {
   });
   test('responds to /map/:id with a status of 200 and json content-type header', () => {
     supertest(app)
-      .get('/map/206')
+      .get('/map/106')
       .expect(200)
       .expect('Content-Type', /json/)
       .end((err) => {
@@ -82,7 +82,7 @@ describe('post /', () => {
   test('responds with a 201 to a post request', () => {
     supertest(app)
       .post('/')
-      .field('chinese', '205')
+      .field('chinese', '105')
       .expect(201)
       .end((err) => {
         if (err) throw err;

@@ -12,9 +12,9 @@ motherData.data.forEach((item, index) => {
     }
   });
   if (index === motherData.data.length - 1) {
-    types.forEach((t) => {
+    types.forEach((type) => {
       const queryString = 'insert into Types (type) values ($1)';
-      client.query(queryString, [t], (err) => {
+      client.query(queryString, [type], (err) => {
         if (err) throw new Error(err.stack);
       });
     });
