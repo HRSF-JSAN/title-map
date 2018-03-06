@@ -701,20 +701,20 @@ const data = [
   },
 ];
 const types = {
-  Pizza: 1,
-  American: 2,
-  Chinese: 3,
-  Italian: 4,
-  Mexican: 5,
-  Indian: 6,
-  French: 6,
-  Brunch: 7,
-  Bars: 8,
-  Seafood: 9,
-  Burmese: 10,
-  SmallBites: 11,
+  American: 1,
+  Italian: 2,
+  French: 3,
+  Brunch: 4,
+  Chinese: 5,
+  Mexican: 6,
+  Pizza: 7,
+  Indian: 8,
+  Bars: 9,
+  SmallBites: 10,
+  Salads: 11,
   WineBars: 12,
-  Salads: 13,
+  Seafood: 13,
+  Burmese: 14,
 };
 
 exports.types = types;

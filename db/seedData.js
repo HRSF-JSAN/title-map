@@ -3,22 +3,12 @@ const client = require('./client');
 // const titleData = require('./data/titleData.json');
 const mapData = require('./data/mapData.json');
 const motherData = require('./data/MomaDummyData');
-const types = [];
 
-motherData.data.forEach((item, index) => {
-  item.foodType.forEach((i) => {
-    if (types.indexOf(i) === -1) {
-      types.push(i);
-    }
+Object.keys(motherData.types).forEach((type) => {
+  const queryString = 'insert into Types (type) values ($1)';
+  client.query(queryString, [type], (err) => {
+    if (err) throw new Error(err.stack);
   });
-  if (index === motherData.data.length - 1) {
-    types.forEach((type) => {
-      const queryString = 'insert into Types (type) values ($1)';
-      client.query(queryString, [type], (err) => {
-        if (err) throw new Error(err.stack);
-      });
-    });
-  }
 });
 
 const insertData = (title, map) => {
