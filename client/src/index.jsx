@@ -7,6 +7,8 @@ import MapView from './components/MapView';
 import Price from './components/Price';
 import { getRestaurant, postType } from './http-helpers';
 
+const PropTypes = require('prop-types');
+
 class App extends Component {
   constructor(props) {
     super(props);
