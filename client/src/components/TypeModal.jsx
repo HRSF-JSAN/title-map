@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button, Modal,
-  ModalHeader, ModalBody, ModalFooter,
-  Input,
+  Button, Modal, ModalHeader,
+  ModalBody, ModalFooter, Input,
 } from 'reactstrap';
 import IosEdit from 'react-icons/lib/io/edit';
 
@@ -14,8 +13,6 @@ class TypeModal extends Component {
       modal: false,
       type: '',
     };
-    this.toggle = this.toggle.bind(this);
-    this.addType = this.addType.bind(this);
   }
 
   toggle() {
@@ -25,18 +22,21 @@ class TypeModal extends Component {
   }
 
   addType() {
+    // is there a way to destructure this function from props?
     this.props.addNewType(this.state.type);
   }
 
   render() {
+    const { className } = this.props;
+    const { type } = this.state;
     return (
       <div>
-        <Button id="typeEditButton" onClick={this.toggle}><IosEdit />Edit</Button>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-          <ModalHeader toggle={this.toggle}>Add or Remove Categories</ModalHeader>
+        <Button id="typeEditButton" onClick={() => this.toggle()}><IosEdit />Edit</Button>
+        <Modal isOpen={this.state.modal} toggle={() => this.toggle()} className={className}>
+          <ModalHeader toggle={() => this.toggle()}>Add or Remove Categories</ModalHeader>
           <ModalBody>
             <Input
-              value={this.state.type}
+              value={type}
               onChange={e => this.setState({ type: e.target.value })}
             />
           </ModalBody>
@@ -44,7 +44,7 @@ class TypeModal extends Component {
             <Button color="danger" onClick={() => { this.toggle(); this.addType(); }}>
               Submit
             </Button>
-            <Button color="clear" onClick={this.toggle}>Cancel</Button>
+            <Button color="clear" onClick={() => this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
       </div>

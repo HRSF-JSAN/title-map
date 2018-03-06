@@ -12,14 +12,14 @@ describe('http-helper tests', () => {
   test('getAddress should return an address', () => {
     helper.getAddress(150, (err, result) => {
       expect(result[0]).toHaveProperty('address');
-      expect(result[0].address).toBeTruth();
+      expect(result[0].address).toBeTruthy();
       expect(result[0]).toHaveLength(1);
     });
   });
   test('getTitle should return a title', () => {
     helper.getTitle(240, (err, result) => {
       expect(result[0]).toHaveProperty('numstars');
-      expect(result[0].price).toBeTruth();
+      expect(result[0].price).toBeTruthy();
       expect(result[0]).toHaveLength(1);
     });
   });

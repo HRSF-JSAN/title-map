@@ -1,25 +1,20 @@
 const client = require('./client');
 
-const queryDB = (queryString, value, callback) => {
-  (value ? client.query(queryString, [value]) : client.query(queryString))
+const queryDB = (queryString, value) => (
+  client.query(queryString, [value])
     .then((res) => {
       const typeQuery = 'select * from restaurantTypeView where id_restaurant = $1';
-      (value ? client.query(typeQuery, [value]) : client.query(queryString))
+      return client.query(typeQuery, [value])
         .then((result) => {
           const types = result.rows.map(i => i.type);
-          callback(null, [res.rows[0], types]);
-        }).catch((e) => {
-          callback(e);
-        });
-    })
-    .catch(e => e.stack);
-};
+          return [res.rows[0], types];
+        }).catch(e => e);
+    }).catch(e => e));
 
-const postDB = (postString, value) => {
-  return client.query(postString, value)
+const postDB = (postString, value) => (
+  client.query(postString, value)
     .then(res => res)
-    .catch(e => e.stack);
-};
+    .catch(e => e.stack));
 
 module.exports = {
   queryDB,

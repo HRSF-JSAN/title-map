@@ -4,5 +4,8 @@ module.exports = {
     "env": {
         "jest": true,
         "browser": true,
-    }
+    },
+    "rules": {
+        "no-unused-expressions": 0,
+    },
 };

@@ -7,9 +7,11 @@ import MapView from './components/MapView';
 import Price from './components/Price';
 import { getRestaurant, postType } from './http-helpers';
 
+const PropTypes = require('prop-types');
+
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       title: {
         id: 0,
@@ -28,8 +30,8 @@ class App extends Component {
     };
   }
 
-  componentWillMount() {
-    this.getState(Math.floor((Math.random() * (300 - 101)) + 101));
+  componentDidMount() {
+    this.getState(this.props.id);
   }
 
   getState(id) {
@@ -47,41 +49,48 @@ class App extends Component {
   }
 
   addNewType(type) {
-    postType(this.state.title.id, type, (err) => {
-      if (err) {
-        throw new Error(err);
-      } else {
-        this.getState(this.state.title.id);
-      }
+    postType(this.state.title.id, type, () => {
+      this.getState(this.state.title.id);
     });
   }
 
   render() {
+    const { title } = this.state;
+    const { map } = this.state;
+    const { types } = this.state;
     return (
       <Container>
         <Row>
           <Col lg="9" md="10" sm="12" xs="12">
-            <Title id="title" title={this.state.title} types={this.state.types} />
+            <Title id="title" title={title} types={types} />
           </Col>
         </Row>
         <Row>
           <Col lg="9" md="10" sm="12" xs="12">
             <Price
               id="price"
-              types={this.state.types}
-              price={this.state.title.price}
+              types={types}
+              price={title.price}
               addNewType={type => this.addNewType(type)}
             />
           </Col>
         </Row>
         <Row>
           <Col lg="4" md="5" sm="8" xs="8">
-            <MapView id="map" map={this.state.map} />
+            <MapView id="map" map={map} />
           </Col>
         </Row>
       </Container>
     );
   }
 }
+
+App.propTypes = {
+  id: PropTypes.number,
+};
+
+App.defaultProps = {
+  id: 101,
+};
 
 module.exports = App;
