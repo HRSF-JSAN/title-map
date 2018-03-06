@@ -142,7 +142,7 @@ exports[`Stars Component render it renders correctly 1`] = `
       <img
         alt="star img"
         className="starImage"
-        src="test-file-stub"
+        src="https://s3-us-west-1.amazonaws.com/foodigouserphotos/Star.png"
       />
     </div>
     <div
@@ -151,7 +151,7 @@ exports[`Stars Component render it renders correctly 1`] = `
       <img
         alt="star img"
         className="starImage"
-        src="test-file-stub"
+        src="https://s3-us-west-1.amazonaws.com/foodigouserphotos/Star.png"
       />
     </div>
     <div
@@ -160,7 +160,7 @@ exports[`Stars Component render it renders correctly 1`] = `
       <img
         alt="star img"
         className="starImage"
-        src="test-file-stub"
+        src="https://s3-us-west-1.amazonaws.com/foodigouserphotos/Star.png"
       />
     </div>
     <div
@@ -169,7 +169,7 @@ exports[`Stars Component render it renders correctly 1`] = `
       <img
         alt="star img"
         className="starImage"
-        src="test-file-stub"
+        src="https://s3-us-west-1.amazonaws.com/foodigouserphotos/Star.png"
       />
     </div>
     <div
@@ -178,7 +178,7 @@ exports[`Stars Component render it renders correctly 1`] = `
       <img
         alt="star img"
         className="starImage"
-        src="test-file-stub"
+        src="https://s3-us-west-1.amazonaws.com/foodigouserphotos/Star.png"
       />
     </div>
     <div
@@ -207,7 +207,7 @@ exports[`Title Component render it renders correctly 1`] = `
         <img
           alt="star img"
           className="starImage"
-          src="test-file-stub"
+          src="https://s3-us-west-1.amazonaws.com/foodigouserphotos/Star.png"
         />
       </div>
       <div
@@ -216,7 +216,7 @@ exports[`Title Component render it renders correctly 1`] = `
         <img
           alt="star img"
           className="starImage"
-          src="test-file-stub"
+          src="https://s3-us-west-1.amazonaws.com/foodigouserphotos/Star.png"
         />
       </div>
       <div
@@ -225,7 +225,7 @@ exports[`Title Component render it renders correctly 1`] = `
         <img
           alt="star img"
           className="starImage"
-          src="test-file-stub"
+          src="https://s3-us-west-1.amazonaws.com/foodigouserphotos/Star.png"
         />
       </div>
       <div
@@ -234,7 +234,7 @@ exports[`Title Component render it renders correctly 1`] = `
         <img
           alt="star img"
           className="starImage"
-          src="test-file-stub"
+          src="https://s3-us-west-1.amazonaws.com/foodigouserphotos/Star.png"
         />
       </div>
       <div
@@ -243,7 +243,7 @@ exports[`Title Component render it renders correctly 1`] = `
         <img
           alt="star img"
           className="starImage"
-          src="test-file-stub"
+          src="https://s3-us-west-1.amazonaws.com/foodigouserphotos/Star.png"
         />
       </div>
       <div
