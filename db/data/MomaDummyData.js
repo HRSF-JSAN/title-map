@@ -107,7 +107,7 @@ const data = [
   {
     id: 116,
     title: 'Louie Cheezy',
-    foodType: ['French', 'Small-Bites'],
+    foodType: ['French', 'SmallBites'],
     rating: 4,
     price: '$$',
   },
@@ -240,7 +240,7 @@ const data = [
   {
     id: 135,
     title: 'My Pie Pizza',
-    foodType: ['Pizza', 'Italian', 'American']
+    foodType: ['Pizza', 'Italian', 'American'],
     rating: 4,
     price: '$',
   },
@@ -345,7 +345,7 @@ const data = [
   {
     id: 150,
     title: 'Midtown Eats',
-    foodType: ['American', 'Wine Bars'],
+    foodType: ['American', 'WineBars'],
     rating: 4,
     price: '$$$',
   },
@@ -373,7 +373,7 @@ const data = [
   {
     id: 154,
     title: 'Barbusa',
-    foodType: ['Italian', 'Wine Bars'],
+    foodType: ['Italian', 'WineBars'],
     rating: 5,
     price: '$$',
   },
@@ -424,7 +424,7 @@ const data = [
     title: 'Vallarta Express Mexican Eatery',
     foodType: ['Mexican', 'American'],
     rating: 5,
-    price: 2,
+    price: '$$',
   },
   {
     id: 162,
@@ -701,14 +701,20 @@ const data = [
   },
 ];
 const types = {
-  Pizza: [110, 121, 129, 135, 144, 146, 168, 176, 186, 189, 192],
-  American: [104, 105, 108, 114, 115, 119, 127, 130, 133, 150, 152, 158, 165, 169, 170, 172, 178, 185, 187, 195, 196],
-  Chinese: [106, 113, 122, 123, 131, 138, 139, 147, 148, 181],
-  Italian: [101, 120, 145, 151, 154, 160, 163, 167, 177, 194, 198],
-  Mexican: [107, 109, 124, 132, 134, 149, 153, 155, 156, 157, 159, 161, 162, 164, 166, 188, 191, 199, 200],
-  Indian: [111, 112, 136, 137, 183, 190, 197],
-  French: [102, 116, 118, 125, 140, 141, 143, 179, 180, 193],
-  Brunch: [103, 117, 126, 128, 142, 171, 173, 174, 175, 182, 184],
+  Pizza: 1,
+  American: 2,
+  Chinese: 3,
+  Italian: 4,
+  Mexican: 5,
+  Indian: 6,
+  French: 6,
+  Brunch: 7,
+  Bars: 8,
+  Seafood: 9,
+  Burmese: 10,
+  SmallBites: 11,
+  WineBars: 12,
+  Salads: 13,
 };
 
 exports.types = types;
