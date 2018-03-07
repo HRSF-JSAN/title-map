@@ -1,9 +1,9 @@
 const { Client } = require('pg');
+require('dotenv').config()
 
 const client = new Client({
-  host: 'localhost',
-  user: process.env.POSTGRES_USER || 'michaeldurfey',
-  database: process.env.POSTGRES_DB || 'restaurantyelp',
+  user: process.env.POSTGRES_USER,
+  database: process.env.POSTGRES_DB,
 });
 
 client.connect()
