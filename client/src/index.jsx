@@ -61,12 +61,12 @@ class App extends Component {
     return (
       <Container>
         <Row>
-          <Col lg="9" md="10" sm="12" xs="12">
+          <Col>
             <Title id="title" title={title} types={types} />
           </Col>
         </Row>
         <Row>
-          <Col lg="9" md="10" sm="12" xs="12">
+          <Col>
             <Price
               id="price"
               types={types}
@@ -76,7 +76,7 @@ class App extends Component {
           </Col>
         </Row>
         <Row>
-          <Col lg="4" md="5" sm="8" xs="8">
+          <Col>
             <MapView id="map" map={map} />
           </Col>
         </Row>

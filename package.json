@@ -30,7 +30,7 @@
     "test": "jest",
     "dev": "webpack -d --watch",
     "start": "nodemon server/index.js",
-    "createDB": "psql --host localhost -U root -f schema.sql postgres",
+    "createDB": "psql -f schema.sql postgres",
     "seedDB": "node db/seedData.js"
   },
   "repository": {
@@ -47,6 +47,7 @@
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0",
+    "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "faker": "^4.1.0",
     "jquery": "^3.3.1",
