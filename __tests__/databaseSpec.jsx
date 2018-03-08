@@ -21,6 +21,7 @@ describe('queryDB', () => {
   test('it should return an empty result for nonExistant data', () => (
     dbQuery.queryDB('select * from restaurant where id = ($1)', 370)
       .then((res) => {
+        console.log(res)
         expect(res[0]).toBeUndefined();
       })
   ));
