@@ -9,7 +9,6 @@ describe('seedsData', () => {
   test('it should retrieve seeded data', () => (
     dbQuery.queryDB('select * from restaurant where id = $1', 175)
       .then((result) => {
-        console.log(result);
         expect(result[0]).toBeDefined();
       })
   ));
