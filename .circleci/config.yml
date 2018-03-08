@@ -46,8 +46,6 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      
-      - run: npm run seedDB
         
       # run tests!
       - run: npm test

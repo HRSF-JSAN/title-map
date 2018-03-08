@@ -30,8 +30,10 @@
     "test": "jest",
     "dev": "webpack -d --watch",
     "start": "nodemon server/index.js",
-    "createDB": "psql -f schema.sql postgres",
-    "seedDB": "node db/seedData.js"
+    "seed": "knex seed:run",
+    "migrate": "knex migrate:lates",
+    "rollback": "knex migrate:rollback",
+    "prod": "webpack -p --watch"
   },
   "repository": {
     "type": "git",
@@ -51,6 +53,7 @@
     "express": "^4.16.2",
     "faker": "^4.1.0",
     "jquery": "^3.3.1",
+    "knex": "^0.14.4",
     "pg": "^7.4.1",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
