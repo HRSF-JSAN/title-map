@@ -34,8 +34,6 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
         
-      - run: telnet restaurantyelp.cinj1vjfcxcl.us-west-1.rds.amazonaws.com 5432DD
-      - run: nc restaurantyelp.cinj1vjfcxcl.us-west-1.rds.amazonaws.com 5432DD
       # run tests!
       - run: npm test
 

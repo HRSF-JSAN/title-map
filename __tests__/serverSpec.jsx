@@ -58,11 +58,12 @@ describe('server routes', () => {
 });
 
 // describe('post /', () => {
-//   test('responds with a 201 to a post request', () => {
-//     return supertest(app)
+//   test('responds with a 201 to a post request', (done) => {
+//     supertest(app)
 //       .post('/')
-//       .set('chinese', '105')
-//       .expect(201);
+//       .field('chinese', 105)
+//       .expect(201)
+//       .end(err => (err ? done(err) : done()));
 //   });
 // });
 
