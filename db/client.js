@@ -8,13 +8,8 @@ const client = new Client({
   password: process.env.POSTGRES_PW,
   database: process.env.POSTGRES_DB,
 });
-console.log('client connect!!!!!!!!!!');
-client.connect()
-  .then(() => console.log('connection!'))
-  .catch(e => console.log(e));
 
-client.on('error', (err) => {
-  console.error('something bad!', err.stack);
-});
+client.connect()
+  .catch((e) => { throw new Error(e); });
 
 module.exports = client;

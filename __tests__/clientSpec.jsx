@@ -8,6 +8,7 @@ describe('client tests', () => {
       })
       .then((data) => {
         expect(data).toBeTruthy();
+        client.end();
       });
   });
 });

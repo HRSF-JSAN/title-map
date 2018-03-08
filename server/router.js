@@ -22,6 +22,7 @@ router
       .catch(() => res.sendStatus(500));
   })
   .post('/', (req, res) => {
+    console.log(req.body)
     db.postDB('insert into types (type) VALUES ($1)', [req.body.type])
       .then(() => {
         const { id } = req.body;

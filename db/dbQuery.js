@@ -16,7 +16,8 @@ const queryDB = (queryString, value) => (
 const postDB = (postString, value) => (
   client.query(postString, value)
     .then(res => res)
-    .catch(e => e.stack));
+    .catch(e => e.stack)
+);
 
 module.exports = {
   queryDB,

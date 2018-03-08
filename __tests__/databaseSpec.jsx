@@ -1,5 +1,6 @@
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+const client = require('../db/client');
 
 const dbQuery = require('../db/dbQuery.js');
 
@@ -42,6 +43,8 @@ describe('queryDB', () => {
         expect(data).toHaveProperty('command');
       }).catch((err) => {
         expect(err).toBeNull();
+      }).then(() => {
+        client.end();
       })
   ));
 });
