@@ -7,7 +7,15 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:7.10
+      - image: circleci/node:8.9.4
+        environment: 
+          - POSTGRES_USER: root
+          - POSTGRES_DB: restaurantyelp
+
+      - image: circleci/postgres:10.2-alpine-ram
+        environment:
+          - POSTGRES_USER: root
+          - POSTGRES_DB: restaurantyelp
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -32,6 +40,8 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: npm run seedDB
         
       # run tests!
       - run: npm test
