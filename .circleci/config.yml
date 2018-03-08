@@ -8,14 +8,6 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:8.9.4
-        environment: 
-          - POSTGRES_USER: root
-          - POSTGRES_DB: restaurantyelp
-
-      - image: circleci/postgres:10.2-alpine-ram
-        environment:
-          - POSTGRES_USER: root
-          - POSTGRES_DB: restaurantyelp
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -33,14 +25,6 @@ jobs:
       #     - v1-dependencies-{{ checksum "package.json" }}
       #     # fallback to using the latest cache if no exact match is found
       #     - v1-dependencies-
-
-      - run: npm install
-      - run: 
-          name: install postgresql
-          command: sudo apt update && sudo apt install postgresql-client
-
-      - run:
-          command: "psql --host localhost -U root -f schema.sql postgres"
 
       - save_cache:
           paths:
