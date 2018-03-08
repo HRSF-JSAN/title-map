@@ -3,7 +3,7 @@ const app = require('../server/app');
 
 describe('/title map routes', () => {
   test('responds to /title/:id with an object with 5 properties', () => {
-    supertest(app)
+    return supertest(app)
       .get('/title/106')
       .expect((res) => {
         res.body[0].id_restaurant = 106;
@@ -11,14 +11,11 @@ describe('/title map routes', () => {
         res.body[0].price = '$';
         res.body[1][1] = 'American';
         res.body.title = 'Boehm - Paucek';
-      })
-      .end((err) => {
-        if (err) throw err;
       });
   });
 
   test('responds to /map/:id with an object with 6 properties', () => {
-    supertest(app)
+    return supertest(app)
       .get('/title/106')
       .expect((res) => {
         res.body[0].id_restaurant = 106;
@@ -26,67 +23,46 @@ describe('/title map routes', () => {
         res.body[0].phonenumber = '561-648-7203';
         res.body[0].image = 'http://lorempixel.com/640/480';
         res.body[1][1] = 'American';
-      })
-      .end((err) => {
-        if (err) throw err;
       });
   });
 });
 
 describe('server routes', () => {
   test('responds to /title/:id with a status of 200 and json content-type header', () => {
-    supertest(app)
+    return supertest(app)
       .get('/title/101')
       .expect(200)
-      .expect('Content-Type', /json/)
-      .end((err) => {
-        if (err) throw err;
-      });
+      .expect('Content-Type', /json/);
   });
   test('responds to /map/:id with a status of 200 and json content-type header', () => {
-    supertest(app)
+    return supertest(app)
       .get('/map/106')
       .expect(200)
-      .expect('Content-Type', /json/)
-      .end((err) => {
-        if (err) throw err;
-      });
+      .expect('Content-Type', /json/);
   });
   test('should receive 200 status for a get request to /', () => {
-    supertest(app)
+    return supertest(app)
       .get('/')
-      .expect(200)
-      .end((err) => {
-        if (err) throw err;
-      });
+      .expect(200);
   });
   test('should receive 404 status for a get request to /cats', () => {
-    supertest(app)
+    return supertest(app)
       .get('/cats')
-      .expect(404)
-      .end((err) => {
-        if (err) throw err;
-      });
+      .expect(404);
   });
   test('should receive 404 status for a get request to /title/80', () => {
-    supertest(app)
+    return supertest(app)
       .get('/title/80')
-      .expect(404)
-      .end((err) => {
-        if (err) throw err;
-      });
+      .expect(404);
   });
 });
 
-describe('post /', () => {
-  test('responds with a 201 to a post request', () => {
-    supertest(app)
-      .post('/')
-      .field('chinese', '105')
-      .expect(201)
-      .end((err) => {
-        if (err) throw err;
-      });
-  });
-});
+// describe('post /', () => {
+//   test('responds with a 201 to a post request', () => {
+//     return supertest(app)
+//       .post('/')
+//       .set('chinese', '105')
+//       .expect(201);
+//   });
+// });
 

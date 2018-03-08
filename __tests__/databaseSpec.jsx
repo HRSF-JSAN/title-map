@@ -6,17 +6,15 @@ const dbQuery = require('../db/dbQuery.js');
 configure({ adapter: new Adapter() });
 
 describe('seedsData', () => {
-  test('it should retrieve seeded data', () => {
-    dbQuery.queryDB('select * from title', (err, result) => {
-      if (err) {
-        throw new Error(err);
-      }
-      expect(result.exists()).toBe('true');
-      expect(result.type()).toBe('object');
-    });
-  });
+  test('it should retrieve seeded data', () => (
+    dbQuery.queryDB('select * from restaurant where id = $1', 175)
+      .then((result) => {
+        console.log(result);
+        expect(result[0]).toBeDefined();
+      })
+  ));
 });
-console.log(process.env.POSTGRES_HOST, process.env.POSTGRES_USER, process.env.POSTGRES_PW, process.env.POSTGRES_PORT, process.env.POSTGRES_DB);
+
 describe('queryDB', () => {
   test('it should return an empty result for nonExistant data', () => (
     dbQuery.queryDB('select * from restaurant where id = ($1)', 370)
