@@ -15,8 +15,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
-client.connect();
-
 app.use('/', routes);
 
 module.exports = app;
