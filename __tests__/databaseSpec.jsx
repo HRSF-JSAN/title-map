@@ -1,5 +1,6 @@
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+
 const client = require('../db/client');
 
 const dbQuery = require('../db/dbQuery.js');
@@ -23,10 +24,10 @@ describe('queryDB', () => {
       })
   ));
 
-  test('it should return a title, map and types property', () => (
+  test('it should return a title and map property', () => (
     dbQuery.queryDB('select * from restaurant where id = $1', 180)
       .then((res) => {
-        expect(res[1].length).toBeGreaterThan(0);
+        expect(res[0].id).toBe(180);
       })
       .catch((err) => { throw new Error(err); })
   ));
