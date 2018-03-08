@@ -9,7 +9,4 @@ const client = new Client({
   database: process.env.POSTGRES_DB,
 });
 
-client.connect()
-  .catch((e) => { throw new Error(e.stack); });
-
 module.exports = client;
