@@ -4,6 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 const dbQuery = require('../db/dbQuery.js');
 
 configure({ adapter: new Adapter() });
+jest.setTimeout(15000);
 
 describe('seedsData', () => {
   test('it should retrieve seeded data', () => {
@@ -21,7 +22,6 @@ describe('queryDB', () => {
   test('it should return an empty result for nonExistant data', () => (
     dbQuery.queryDB('select * from restaurant where id = ($1)', 370)
       .then((res) => {
-        console.log(res)
         expect(res[0]).toBeUndefined();
       })
   ));
