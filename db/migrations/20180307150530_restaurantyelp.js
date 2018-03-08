@@ -1,7 +1,7 @@
 const DOLLARSIGNS = ['$', '$$', '$$$', '$$$$', '$$$$$'];
-/* eslint-disable */
-exports.up = function(knex, Promise) {
-  return Promise.all([
+
+exports.up = (knex, Promise) => (
+  Promise.all([
     knex.schema.createTable('restaurant', (table) => {
       table.integer('id');
       table.string('title');
@@ -23,14 +23,14 @@ exports.up = function(knex, Promise) {
       table.integer('id_types');
       table.integer('id_restaurant');
     }),
-  ]);
-};
+  ])
+);
 
-exports.down = function(knex, Promise) {
-  return Promise.all([
+exports.down = (knex, Promise) => (
+  Promise.all([
     knex.schema.dropTable('restaurant'),
     knex.schema.dropTable('address'),
     knex.schema.dropTable('types'),
     knex.schema.dropTable('restaurant_types'),
-  ]);
-};
+  ])
+);
