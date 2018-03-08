@@ -13,4 +13,8 @@ client.connect()
   .then(() => console.log('connection!'))
   .catch(e => console.log(e));
 
+client.on('error', (err) => {
+  console.error('something bad!', err.stack);
+});
+
 module.exports = client;
