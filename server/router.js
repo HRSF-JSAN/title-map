@@ -22,10 +22,10 @@ router
       .catch(() => res.sendStatus(500));
   })
   .post('/', (req, res) => {
-    db.postDB('insert into Types (type) VALUES ($1)', [req.body.type])
+    db.postDB('insert into types (type) VALUES ($1)', [req.body.type])
       .then(() => {
         const { id } = req.body;
-        client.query('select * from Types where type in ($1)', [req.body.type])
+        client.query('select * from types where type in ($1)', [req.body.type])
           .then((data) => {
             const queryString = 'insert into restaurant_types (id_restaurant, id_types) VALUES($1, $2)';
             db.postDB(queryString, [id, data.rows[0].id])
