@@ -8,7 +8,7 @@ const client = new Client({
   password: process.env.POSTGRES_PW,
   database: process.env.POSTGRES_DB,
 });
-
+console.log('client connect!!!!!!!!!!');
 client.connect()
   .then(() => console.log('connection!'))
   .catch(e => console.log(e));

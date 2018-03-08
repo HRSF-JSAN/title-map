@@ -4,7 +4,6 @@ import Adapter from 'enzyme-adapter-react-16';
 const dbQuery = require('../db/dbQuery.js');
 
 configure({ adapter: new Adapter() });
-jest.setTimeout(15000);
 
 describe('seedsData', () => {
   test('it should retrieve seeded data', () => {
@@ -17,7 +16,7 @@ describe('seedsData', () => {
     });
   });
 });
-console.log(process.env.POSTGRES_HOST, process.env.POSTGRES_USER, process.env.POSTGRES_PW, process.env.POSTGRES_PORT, process.env.POSTGRES_DB)
+console.log(process.env.POSTGRES_HOST, process.env.POSTGRES_USER, process.env.POSTGRES_PW, process.env.POSTGRES_PORT, process.env.POSTGRES_DB);
 describe('queryDB', () => {
   test('it should return an empty result for nonExistant data', () => (
     dbQuery.queryDB('select * from restaurant where id = ($1)', 370)
