@@ -1,3 +1,5 @@
 const app = require('./app');
 
-app.listen(app.get('port'), () => console.dir('app listening on port 3001'));
+const port = process.env.PORT || 3400;
+
+app.listen(port, () => console.dir(`listening on ${port}`));
