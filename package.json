@@ -29,12 +29,12 @@
   "scripts": {
     "test": "jest",
     "dev": "webpack -d --watch",
-    "start": "nodemon server/index.js",
+    "start": "node server/index.js",
     "seed": "knex seed:run",
     "migrate": "knex migrate:latest",
     "seedDB": "knex migrate:latest && knex seed:run",
     "rollback": "knex migrate:rollback",
-    "prod": "webpack -p --watch"
+    "prod": "webpack -p"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,7 @@
 node_modules**
 package-lock.json
 /client/dist/bundle.js
+/client/dist/bundle.js.map
 /coverage**
 .DS_STORE
 /db/mockDGen.js
