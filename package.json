@@ -28,13 +28,13 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "webpack",
+    "dev": "webpack -d --watch",
     "start": "node server/index.js",
     "seed": "knex seed:run",
     "migrate": "knex migrate:latest",
     "seedDB": "knex migrate:latest && knex seed:run",
     "rollback": "knex migrate:rollback",
-    "webpack": "webpack"
+    "prod": "webpack -p"
   },
   "repository": {
     "type": "git",

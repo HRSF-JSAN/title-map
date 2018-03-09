@@ -10,6 +10,8 @@ app.use(morgan('dev'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.set('port', process.env.PORT || 3500);
+
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use('/', routes);
