@@ -10,7 +10,7 @@ app.use(morgan('dev'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, '../index.html')));
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use('/', routes);
 
