@@ -1,24 +1,34 @@
-import $ from 'jquery';
+const axios = require('axios');
+const yelp = require('yelp-fusion');
+
+const client = yelp.client(process.env.APIKEY);
 
 const Promise = require('bluebird');
 
 const getTitle = (id, callback) => {
-  $.getJSON(`/title/${id}`)
-    .done(data => callback(null, data));
+  axios(`/title/${id}`)
+    .then(data => callback(null, data));
 };
 
 const getAddress = (id, callback) => {
-  $.getJSON(`/map/${id}`)
-    .done(data => callback(null, data));
+  axios(`/map/${id}`)
+    .then(data => callback(null, data));
 };
 
 const postType = (id, type, callback) => {
-  $.post('/', { type, id })
-    .done(() => callback())
-    .fail(err => err);
+  axios.post('/', { type, id })
+    .then(() => callback())
+    .catch(err => console.error(err));
 };
 
-// unexpected block statement surrounding arrow body
+const callYelp = () => {
+  axios({
+    method: 'get',
+    url: 'https://api.yelp.com/v3/businesses/search',
+
+  });
+};
+
 const getRestaurant = (id, callback) => (
   new Promise((resolve, reject) => {
     getTitle(id, (err, data) => {
