@@ -16,7 +16,7 @@ class App extends Component {
       title: {
         id: 0,
         title: '',
-        numstars: 0,
+        rating: 0,
         price: '',
       },
       types: [],
