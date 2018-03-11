@@ -31,18 +31,26 @@ class App extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getState(this.props.id);
   }
 
   getState(id) {
-    return getRestaurant(id).then((result) => {
-      const address = result[0].data.location.display_address.join(', ');
-      const phonenumber = result[0].data.display_phone;
-      const image = result[0].data.image_url;
-      const reviews = result[0].data.review_count;
-      if (address && phonenumber && image) {
-        const newMap = {
+    return getRestaurant(id)
+      .then((result) => {
+        const address = result[0].data
+          ? result[0].data.location.display_address.join(', ')
+          : result[1].data[0].address;
+        const phonenumber = result[0].data
+          ? result[0].data.display_phone
+          : result[1].data[0].phonenumber;
+        const image = result[0].data
+          ? result[0].data.image_url
+          : result[1].data[0].image;
+        const reviews = result[0].data
+          ? result[0].data.review_count
+          : 0;
+        const map = {
           address,
           phonenumber,
           image,
@@ -50,18 +58,10 @@ class App extends Component {
         this.setState({
           title: result[2].data[0],
           types: result[2].data[1],
-          map: newMap,
+          map,
           reviews,
         });
-      } else {
-        this.setState({
-          title: result[2].data[0],
-          types: result[1].data[1],
-          map: result[1].data[0],
-          reviews,
-        });
-      }
-    });
+      });
   }
 
   addNewType(type) {
@@ -106,7 +106,7 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  id: 101,
+  id: 167,
 };
 
 module.exports = App;
