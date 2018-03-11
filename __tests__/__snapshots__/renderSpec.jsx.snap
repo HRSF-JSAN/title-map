@@ -184,7 +184,7 @@ exports[`Stars Component render it renders correctly 1`] = `
     <div
       className="reviewText"
     >
-      3345 reviews
+      undefined reviews
     </div>
   </div>
 </div>
@@ -249,7 +249,7 @@ exports[`Title Component render it renders correctly 1`] = `
       <div
         className="reviewText"
       >
-        3345 reviews
+        undefined reviews
       </div>
     </div>
   </div>

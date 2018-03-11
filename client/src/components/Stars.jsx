@@ -4,7 +4,7 @@ import Star from './Star';
 
 const uniqid = require('uniqid');
 
-const Stars = ({ rating }) => {
+const Stars = ({ rating, reviews }) => {
   const starNum = [];
   for (let i = 0; i < 5; i += 1) {
     i < rating ? starNum.push(<Star className="redStar star" key={uniqid()} />) :
@@ -14,7 +14,7 @@ const Stars = ({ rating }) => {
     <div>
       <div className="starContainer" >
         { starNum }
-        <div className="reviewText">3345 reviews</div>
+        <div className="reviewText">{`${reviews} reviews`}</div>
       </div>
     </div>
   );
@@ -22,6 +22,7 @@ const Stars = ({ rating }) => {
 
 Stars.propTypes = {
   rating: PropTypes.number.isRequired,
+  reviews: PropTypes.number.isRequired,
 };
 
 module.exports = Stars;

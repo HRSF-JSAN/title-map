@@ -27,22 +27,38 @@ class App extends Component {
         phonenumber: '',
         id_restaurant: 0,
       },
+      reviews: 0,
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getState(this.props.id);
   }
 
   getState(id) {
-    getRestaurant(id, (err, result) => {
-      if (err) {
-        throw new Error(err);
+    return getRestaurant(id).then((result) => {
+      const address = result[0].data.location.display_address.join(', ');
+      const phonenumber = result[0].data.display_phone;
+      const image = result[0].data.image_url;
+      const reviews = result[0].data.review_count;
+      if (address && phonenumber && image) {
+        const newMap = {
+          address,
+          phonenumber,
+          image,
+        };
+        this.setState({
+          title: result[2].data[0],
+          types: result[2].data[1],
+          map: newMap,
+          reviews,
+        });
       } else {
         this.setState({
-          title: result[0],
-          types: result[1],
-          map: result[2],
+          title: result[2].data[0],
+          types: result[1].data[1],
+          map: result[1].data[0],
+          reviews,
         });
       }
     });
@@ -62,7 +78,7 @@ class App extends Component {
       <Container>
         <Row>
           <Col>
-            <Title id="title" title={title} types={types} />
+            <Title id="title" title={title} types={types} reviews={this.state.reviews} />
           </Col>
         </Row>
         <Row>
