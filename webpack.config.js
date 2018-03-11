@@ -15,7 +15,7 @@ module.exports = {
         test: /\.(js|jsx)?$/,
         include: SRC_DIR,
         exclude: [
-          path.resolve(__dirname, 'node_modules'),
+          path.join(__dirname, 'node_modules'),
         ],
         loader: 'babel-loader',
         query: {
@@ -40,5 +40,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  devtool: 'cheap-module-source-map',
+  node: {
+    fs: 'empty',
+  },
 };

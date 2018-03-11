@@ -47,6 +47,7 @@
   },
   "homepage": "https://github.com/MichaelDurfey/FoodiGo#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0",
@@ -61,8 +62,10 @@
     "react-dom": "^16.2.0",
     "react-icons": "^2.2.7",
     "reactstrap": "^5.0.0-beta",
+    "save": "^2.3.2",
     "uniqid": "^4.1.1",
-    "webpack": "^3.11.0"
+    "webpack": "^3.11.0",
+    "yelp-fusion": "^2.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -86,7 +89,6 @@
     "nodemon": "^1.15.1",
     "react-test-renderer": "^16.2.0",
     "style-loader": "^0.20.2",
-    "supertest": "^3.0.0",
-    "webpack": "^3.11.0"
+    "supertest": "^3.0.0"
   }
 }

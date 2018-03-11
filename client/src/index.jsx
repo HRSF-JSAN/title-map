@@ -27,6 +27,7 @@ class App extends Component {
         phonenumber: '',
         id_restaurant: 0,
       },
+      reviews: 0,
     };
   }
 
@@ -35,17 +36,32 @@ class App extends Component {
   }
 
   getState(id) {
-    getRestaurant(id, (err, result) => {
-      if (err) {
-        throw new Error(err);
-      } else {
+    return getRestaurant(id)
+      .then((result) => {
+        const address = result[0].data
+          ? result[0].data.location.display_address.join(', ')
+          : result[1].data[0].address;
+        const phonenumber = result[0].data
+          ? result[0].data.display_phone
+          : result[1].data[0].phonenumber;
+        const image = result[0].data
+          ? result[0].data.image_url
+          : result[1].data[0].image;
+        const reviews = result[0].data
+          ? result[0].data.review_count
+          : 0;
+        const map = {
+          address,
+          phonenumber,
+          image,
+        };
         this.setState({
-          title: result[0],
-          types: result[1],
-          map: result[2],
+          title: result[2].data[0],
+          types: result[2].data[1],
+          map,
+          reviews,
         });
-      }
-    });
+      });
   }
 
   addNewType(type) {
@@ -62,7 +78,7 @@ class App extends Component {
       <Container>
         <Row>
           <Col>
-            <Title id="title" title={title} types={types} />
+            <Title id="title" title={title} types={types} reviews={this.state.reviews} />
           </Col>
         </Row>
         <Row>
@@ -90,7 +106,7 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  id: 101,
+  id: 167,
 };
 
 module.exports = App;

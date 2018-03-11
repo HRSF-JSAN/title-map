@@ -17,8 +17,7 @@ const Price = ({
     •
     </div>
     <div id="types">
-      {/* effort to get a unique key for each new component */}
-      { types.map((i, idx) => <a href ="#" key={uniqid()}>{i}</a>) }{/* eslint-disable-line*/}
+      { types.map((i, idx) => <a href ="#" key={uniqid()}>{i}</a>) } {/* eslint-disable-line */}
     </div>
     <div>
       <TypeModal addNewType={addNewType} className="typeModal" />
