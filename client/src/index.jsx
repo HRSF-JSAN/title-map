@@ -106,7 +106,7 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  id: 167,
+  id: 0,
 };
 
 module.exports = App;

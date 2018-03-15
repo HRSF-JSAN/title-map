@@ -8,6 +8,14 @@ package-lock.json
 .env
 .gitignore
 .elasticbeanstalk/
+/db/batchSeed/address/batchSpeedFile.csv
+/db/batchSeed/address/batchFile.csv
+/db/batchSeed/restaurant_typeBatch/batchSpeedFile.csv
+/db/batchSeed/restaurant_typeBatch/batchFile.csv
+/db/batchSeed/restaurantBatch/batchSpeedFile.csv
+/db/batchSeed/restaurantBatch/batchFile.csv
+/db/batchSeed/types/batchSpeedFile.csv
+/db/batchSeed/types/batchFile.csv
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

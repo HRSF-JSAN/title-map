@@ -1,3 +1,4 @@
+const faker = require('faker');
 const data = [
   {
     id: 101,
@@ -700,6 +701,7 @@ const data = [
     price: '$$',
   },
 ];
+
 const types = {
   American: 1,
   Italian: 2,
