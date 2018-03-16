@@ -34,7 +34,8 @@
     "migrate": "knex migrate:latest",
     "seedDB": "knex migrate:latest && knex seed:run",
     "rollback": "knex migrate:rollback",
-    "prod": "webpack -p"
+    "prod": "webpack -p",
+    "gen-data": "node db/batchSeed/types/createBatch.js && node db/batchSeed/address/createBatch.js && node db/batchSeed/restaurant_typeBatch/createBatch.js && node db/batchSeed/restaurantBatch/createBatch.js"
   },
   "repository": {
     "type": "git",
@@ -51,6 +52,7 @@
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0",
+    "concurrently": "^3.5.1",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "faker": "^4.1.0",
