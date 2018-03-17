@@ -40,7 +40,7 @@ const makeData = (num) => {
   }
 
   if (index === 1e7) {
-    const script = 'mongoimport --db restaurantyelp --collection restaurantyelps --file batchFile.json num';
+    const script = 'mongoimport --db restaurantyelp --collection restaurantyelps --file batchFile.json --numInsertionWorkers 4';
     exec(script);
   }
 };
