@@ -5,11 +5,6 @@ const { exec } = require('child_process');
 
 let types = Object.keys(data.types);
 
-let randomElement = (array) => {
-  randomIndex = Math.floor(Math.random() * array.length);
-  return array[randomIndex];
-};
-
 const writeStream = fs.createWriteStream('./batchFile.json');
 
 const makeData = (num) => {
@@ -28,7 +23,7 @@ const makeData = (num) => {
         number: faker.phone.phoneNumberFormat(),
         image: faker.image.imageUrl(),
       },
-      type: randomElement(types),
+      type: faker.random.arrayElement(types),
     };
 
     drain = writeStream.write(`${JSON.stringify(data)}\n`);
