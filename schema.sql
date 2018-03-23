@@ -4,6 +4,7 @@
   \connect restaurantyelp;
 
     CREATE TYPE dollarsigns AS ENUM ('$', '$$', '$$$', '$$$$', '$$$$$', '$$$$$$');
+    
   CREATE TABLE Restaurant (
     id INTEGER,
     title VARCHAR(100),

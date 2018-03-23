@@ -5,7 +5,7 @@ import './styles.css';
 import Title from './components/Title';
 import MapView from './components/MapView';
 import Price from './components/Price';
-import { getRestaurant, postType } from './http-helpers';
+import ajax from './ajax';
 
 const PropTypes = require('prop-types');
 
@@ -27,7 +27,7 @@ class App extends Component {
         phonenumber: '',
         id_restaurant: 0,
       },
-      reviews: 0,
+      reviews: 359,
     };
   }
 
@@ -35,38 +35,25 @@ class App extends Component {
     this.getState(this.props.id);
   }
 
-  getState(id) {
-    return getRestaurant(id)
-      .then((result) => {
-        const address = result[0].data
-          ? result[0].data.location.display_address.join(', ')
-          : result[1].data[0].address;
-        const phonenumber = result[0].data
-          ? result[0].data.display_phone
-          : result[1].data[0].phonenumber;
-        const image = result[0].data
-          ? result[0].data.image_url
-          : result[1].data[0].image;
-        const reviews = result[0].data
-          ? result[0].data.review_count
-          : 0;
-        const map = {
-          address,
-          phonenumber,
-          image,
-        };
+  getState(id) { /*eslint-disable-line*/
+    ajax.getTitle(this.props.id, (err, res) => {
+      if (err) {
+        console.log(err); /*eslint-disable-line*/
+      } else {
         this.setState({
-          title: result[2].data[0],
-          types: result[2].data[1],
-          map,
-          reviews,
+          title: res[0],
+          type: res[1], /*eslint-disable-line*/
         });
-      });
-  }
-
-  addNewType(type) {
-    postType(this.state.title.id, type, () => {
-      this.getState(this.state.title.id);
+      }
+    });
+    ajax.getAddress(this.props.id, (err, res) => {
+      if (err) {
+        console.log(err); /*eslint-disable-line*/
+      } else {
+        this.setState({
+          map: res[0],
+        });
+      }
     });
   }
 
@@ -106,7 +93,7 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  id: 0,
+  id: 10,
 };
 
 module.exports = App;

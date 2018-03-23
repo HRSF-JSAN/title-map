@@ -13,6 +13,12 @@ const queryDB = (queryString, value) => (
         }).catch(e => e);
     }).catch(e => e));
 
+const queryMap = (queryString, value) => (
+  client.query(queryString, [value])
+    .then((res) => 
+      return [res.rows[0]];
+    }).catch(e => e));
+
 const postDB = (postString, value) => (
   client.query(postString, value)
     .then(res => res)
@@ -22,4 +28,5 @@ const postDB = (postString, value) => (
 module.exports = {
   queryDB,
   postDB,
+  queryMap,
 };

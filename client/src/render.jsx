@@ -3,6 +3,6 @@
 import App from './index';
 
 
-// ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('title'));
 
-window.TitleMap = App;
+// window.TitleMap = App;

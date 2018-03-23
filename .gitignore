@@ -16,7 +16,17 @@ package-lock.json
 /db/batchSeed/restaurantBatch/batchFile.csv
 /db/batchSeed/types/batchSpeedFile.csv
 /db/batchSeed/types/batchFile.csv
-
+newrelic.js
+dump.rdb
+newrelic_agent.log
+hello.yml
+batchAddressSpeedFile.csv
+batchResSpeedFile.csv
+batchResTypesSpeedFile.csv
+batchTypesSpeedFile.csv
+redis-stable.tar.gz
+redis-stable/
+  
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
